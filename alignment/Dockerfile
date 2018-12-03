@@ -3,16 +3,3 @@ LABEL maintainer="Marco Capuccini <marco.capuccini@it.uu.se>"
 
 RUN wget ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/reference/human_g1k_v37.fasta.gz 
 RUN gunzip human_g1k_v37.fasta.gz || true
-
-
-
-
-
-
-
-
-
-
-
-
-
