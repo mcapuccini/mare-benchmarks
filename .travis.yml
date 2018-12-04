@@ -40,19 +40,11 @@ before_script:
     -s $(find . -name '*.yml')
 
 script:
-<<<<<<< HEAD
   - travis_wait 30 docker build -t $TAG $BUILD_DIR
-=======
-  - docker build -t $TAG $BUILD_DIR
->>>>>>> master
 
 after_success:
   - >
     if [ $TRAVIS_PULL_REQUEST = 'false' ]; then
       docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-<<<<<<< HEAD
       travis_wait 30 docker push $TAG
-=======
-      docker push $TAG
->>>>>>> master
     fi
