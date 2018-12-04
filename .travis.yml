@@ -1,0 +1,34 @@
+---
+language: python
+
+branches:
+  only:
+    - master
+
+env:
+  global:
+    - DOCKER_USERNAME="mcapuccini"
+    - secure: >
+        HpIc3WGVWyIB+ikc17kEe8h4ZqcMiU7cUoRUq5+9U36uU5SGACi0visdu1vzgodsc66j05cHx
+        EvEGXIzQeWLqYTMulx2vfSY944PBHfBUx7MOypzj8AWIm0nFKxOGDrp2EPdheUEkg22LbB/xw
+        HvT5+bF62SgyytaLjxO59ILbgoLpo0tbY2iMZiIuh25AqA0Co2acyUxpj5J8v1N42CewB4+Bw
+        kNvRwFCtM/v+EH5StAMdeIrSNxXsmL548i4tr4zYFE+/60odfwraNzYsmD+04Eq6mCJnpCzdk
+        EGS+m5lIm17wm2MSkJ+DceYpCqPfVBe4dokt4cLRTfXS/bDNGvwy9LqEInurDiv5OR9oOUIFb
+        sMjPqW04rRcPshvIGwUiRnKMOi4WzBvMX398pT6WwEkxI/zBE74f2g0FGhnTEMRbMe5fY+AQZ
+        PLFEn2ExDIPFcn60rR0NKgZ7W2N0/qkMG+JUp4H+q0UdzWM0gwFSlbmRdlKVinzhIF9Mn6/SJb
+        3aC9hMUps0L/+TUqgLxcAEDcPFwVg1gKGVRqvQ8pw7Ai4qMGJFjMk2Tra1BTB50GAOUL8VZyKT
+        cjQnaoPGLH+6sDkEwITU+Uuhzmlnq7hc1nthW8LKqLxCmSwGX/qdGlBx8v2FTnW4jZMOKHak3U
+        VB37Py9XB4oymsRnfje/gW4=
+  matrix:
+    - TAG="mcapuccini/alignment:latest"
+      BUILD_DIR="alignment"
+
+script:
+  - docker build -t $TAG $BUILD_DIR
+
+after_success:
+  - >
+    if [ $TRAVIS_PULL_REQUEST = 'false' ]; then
+      docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+      docker push $TAG
+    fi
