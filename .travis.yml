@@ -5,9 +5,13 @@ branches:
   only:
     - master
 
+services:
+  - docker
+
 env:
   global:
     - DOCKER_USERNAME="mcapuccini"
+    - YAMLLINT_VERSION=1.8.1
     - secure: >
         HpIc3WGVWyIB+ikc17kEe8h4ZqcMiU7cUoRUq5+9U36uU5SGACi0visdu1vzgodsc66j05cHx
         EvEGXIzQeWLqYTMulx2vfSY944PBHfBUx7MOypzj8AWIm0nFKxOGDrp2EPdheUEkg22LbB/xw
@@ -22,6 +26,18 @@ env:
   matrix:
     - TAG="mcapuccini/alignment:latest"
       BUILD_DIR="alignment"
+
+before_script:
+  # Linting
+  - >
+    docker run lukasmartinelli/hadolint hadolint
+    --ignore DL3015
+    --ignore DL3008
+    - < ${BUILD_DIR}/Dockerfile
+  - >
+    docker run -v $PWD:/workdir boiyaa/yamllint:$YAMLLINT_VERSION
+    -c .yamllint.yml
+    -s $(find . -name '*.yml')
 
 script:
   - docker build -t $TAG $BUILD_DIR
