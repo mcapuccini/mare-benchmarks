@@ -6,7 +6,7 @@ WORKDIR /ref
 
 # download the reference genome and unzip it
 RUN wget -nv http://uppnex.se/human_g1k_v37.fa.tar.gz && \
-    gunzip human_g1k_v37.fa.tar.gz; \
+    tar -xzf human_g1k_v37.fa.tar.gz ; \
     rm human_g1k_v37.fa.tar.gz
 
 WORKDIR /
