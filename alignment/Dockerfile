@@ -7,4 +7,4 @@ WORKDIR /ref
 # download the reference genome and untar it
 RUN wget -qO- http://uppnex.se/human_g1k_v37.fasta.tar.gz | tar xvz
 
-WORKDIR / 
+WORKDIR /
