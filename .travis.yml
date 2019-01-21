@@ -26,6 +26,8 @@ env:
   matrix:
     - TAG="mcapuccini/alignment:latest"
       BUILD_DIR="alignment"
+    - TAG="mcapuccini/sdsorter:latest"
+      BUILD_DIR="sdsorter"
 
 before_script:
   # Linting
@@ -40,7 +42,7 @@ before_script:
     -s $(find . -name '*.yml')
 
 script:
-  - travis_wait 30 docker build -t $TAG $BUILD_DIR
+  - travis_wait 30 docker build --cache-from $TAG -t $TAG $BUILD_DIR
 
 after_success:
   - >
