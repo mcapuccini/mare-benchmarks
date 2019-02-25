@@ -42,7 +42,7 @@ before_script:
     -s $(find . -name '*.yml')
 
 script:
-  - travis_wait 30 docker build --cache-from $TAG -t $TAG $BUILD_DIR
+  - travis_wait 50 docker build --cache-from $TAG -t $TAG $BUILD_DIR
 
 after_success:
   - >
