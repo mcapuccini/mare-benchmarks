@@ -59,7 +59,7 @@ script:
   - >
     travis_wait 60
     docker build
-    --buld-arg REF_URL=$REF_URL
+    --build-arg REF_URL=$REF_URL
     --cache-from $TAG
     -t $TAG
     $BUILD_DIR
