@@ -26,8 +26,22 @@ env:
   matrix:
     - TAG="mcapuccini/alignment:latest"
       BUILD_DIR="alignment"
+      REF_URL="https://s3.amazonaws.com/mcapuccini-mare/human_g1k_v37.fasta.tar.gz"
+    - TAG="mcapuccini/alignment:latest-1-16"
+      BUILD_DIR="alignment"
+      REF_URL="https://s3.amazonaws.com/mcapuccini-mare/human_g1k_v37.1-16.tar.gz"
+    - TAG="mcapuccini/alignment:latest-2-16"
+      BUILD_DIR="alignment"
+      REF_URL="https://s3.amazonaws.com/mcapuccini-mare/human_g1k_v37.2-16.tar.gz"
+    - TAG="mcapuccini/alignment:latest-4-16"
+      BUILD_DIR="alignment"
+      REF_URL="https://s3.amazonaws.com/mcapuccini-mare/human_g1k_v37.4-16.tar.gz"
+    - TAG="mcapuccini/alignment:latest-8-16"
+      BUILD_DIR="alignment"
+      REF_URL="https://s3.amazonaws.com/mcapuccini-mare/human_g1k_v37.8-16.tar.gz"
     - TAG="mcapuccini/sdsorter:latest"
       BUILD_DIR="sdsorter"
+      REF_URL="none"
 
 before_script:
   # Linting
@@ -42,7 +56,13 @@ before_script:
     -s $(find . -name '*.yml')
 
 script:
-  - travis_wait 60 docker build --cache-from $TAG -t $TAG $BUILD_DIR
+  - >
+    travis_wait 60
+    docker build
+    --build-arg REF_URL=$REF_URL
+    --cache-from $TAG
+    -t $TAG
+    $BUILD_DIR
 
 after_success:
   - >
