@@ -1,0 +1,160 @@
+{
+  "paragraphs": [
+    {
+      "text": "%spark.dep\n// Download deps\nz.reset\nz.load(\"org.bdgenomics.adam:adam-core-spark2_2.11:0.25.0\")\nz.load(\"com.github.docker-java:docker-java:3.0.14\")",
+      "user": "anonymous",
+      "dateUpdated": "2019-04-05 16:45:13.583",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "res0: org.apache.zeppelin.dep.Dependency \u003d org.apache.zeppelin.dep.Dependency@39c4a05f\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1554479922325_-1442333607",
+      "id": "20190405-155842_407667956",
+      "dateCreated": "2019-04-05 15:58:42.325",
+      "dateStarted": "2019-04-05 16:45:14.098",
+      "dateFinished": "2019-04-05 16:45:24.013",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\nimport org.bdgenomics.adam.io._\nimport org.apache.hadoop.io.Text\n\n// Read and interlace dataset\nval fr \u003d sc.newAPIHadoopFile(\n    \"s3n://1000genomes/phase3/data/HG02666/sequence_read/*_1*\",\n    classOf[SingleFastqInputFormat],\n    classOf[Void],\n    classOf[Text]\n).map(_._2.toString)\nval rr \u003d sc.newAPIHadoopFile(\n    \"s3n://1000genomes/phase3/data/HG02666/sequence_read/*_2*\",\n    classOf[SingleFastqInputFormat],\n    classOf[Void],\n    classOf[Text]\n).map(_._2.toString)\nval inputData \u003d fr.zip(rr).map { case(fr,rr) \u003d\u003e fr+rr.dropRight(1) }.repartition(16)",
+      "user": "anonymous",
+      "dateUpdated": "2019-04-05 16:45:28.239",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import org.bdgenomics.adam.io._\nimport org.apache.hadoop.io.Text\nfr: org.apache.spark.rdd.RDD[String] \u003d MapPartitionsRDD[1] at map at \u003cconsole\u003e:36\nrr: org.apache.spark.rdd.RDD[String] \u003d MapPartitionsRDD[3] at map at \u003cconsole\u003e:35\ninputData: org.apache.spark.rdd.RDD[String] \u003d MapPartitionsRDD[9] at repartition at \u003cconsole\u003e:33\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1554480647088_64770193",
+      "id": "20190405-161047_1773165665",
+      "dateCreated": "2019-04-05 16:10:47.088",
+      "dateStarted": "2019-04-05 16:45:28.735",
+      "dateFinished": "2019-04-05 16:45:38.260",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\nimport java.io.PrintWriter\n// For each partition write to disk\ninputData.partitions.indices.iterator.foreach { i \u003d\u003e\n    val partition \u003d sc.runJob(inputData, (iter: Iterator[String]) \u003d\u003e iter.toArray, Seq(i)).head\n    val pw \u003d new PrintWriter(s\"/media/disk/bwa_$i\")\n    partition.foreach(r \u003d\u003e pw.println(r))\n    pw.close\n}",
+      "user": "anonymous",
+      "dateUpdated": "2019-04-05 16:45:59.388",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import java.io.PrintWriter\norg.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 1.0 failed 1 times, most recent failure: Lost task 0.0 in stage 1.0 (TID 96, localhost, executor driver): java.lang.OutOfMemoryError\n\tat java.io.ByteArrayOutputStream.hugeCapacity(ByteArrayOutputStream.java:123)\n\tat java.io.ByteArrayOutputStream.grow(ByteArrayOutputStream.java:117)\n\tat java.io.ByteArrayOutputStream.ensureCapacity(ByteArrayOutputStream.java:93)\n\tat java.io.ByteArrayOutputStream.write(ByteArrayOutputStream.java:153)\n\tat org.apache.spark.util.ByteBufferOutputStream.write(ByteBufferOutputStream.scala:41)\n\tat java.io.ObjectOutputStream$BlockDataOutputStream.drain(ObjectOutputStream.java:1877)\n\tat java.io.ObjectOutputStream$BlockDataOutputStream.setBlockDataMode(ObjectOutputStream.java:1786)\n\tat java.io.ObjectOutputStream.writeObject0(ObjectOutputStream.java:1189)\n\tat java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:348)\n\tat org.apache.spark.serializer.JavaSerializationStream.writeObject(JavaSerializer.scala:43)\n\tat org.apache.spark.serializer.JavaSerializerInstance.serialize(JavaSerializer.scala:100)\n\tat org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:393)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)\n\tat java.lang.Thread.run(Thread.java:748)\n\nDriver stacktrace:\n  at org.apache.spark.scheduler.DAGScheduler.org$apache$spark$scheduler$DAGScheduler$$failJobAndIndependentStages(DAGScheduler.scala:1651)\n  at org.apache.spark.scheduler.DAGScheduler$$anonfun$abortStage$1.apply(DAGScheduler.scala:1639)\n  at org.apache.spark.scheduler.DAGScheduler$$anonfun$abortStage$1.apply(DAGScheduler.scala:1638)\n  at scala.collection.mutable.ResizableArray$class.foreach(ResizableArray.scala:59)\n  at scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:48)\n  at org.apache.spark.scheduler.DAGScheduler.abortStage(DAGScheduler.scala:1638)\n  at org.apache.spark.scheduler.DAGScheduler$$anonfun$handleTaskSetFailed$1.apply(DAGScheduler.scala:831)\n  at org.apache.spark.scheduler.DAGScheduler$$anonfun$handleTaskSetFailed$1.apply(DAGScheduler.scala:831)\n  at scala.Option.foreach(Option.scala:257)\n  at org.apache.spark.scheduler.DAGScheduler.handleTaskSetFailed(DAGScheduler.scala:831)\n  at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.doOnReceive(DAGScheduler.scala:1872)\n  at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:1821)\n  at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:1810)\n  at org.apache.spark.util.EventLoop$$anon$1.run(EventLoop.scala:48)\n  at org.apache.spark.scheduler.DAGScheduler.runJob(DAGScheduler.scala:642)\n  at org.apache.spark.SparkContext.runJob(SparkContext.scala:2034)\n  at org.apache.spark.SparkContext.runJob(SparkContext.scala:2055)\n  at org.apache.spark.SparkContext.runJob(SparkContext.scala:2074)\n  at $anonfun$1.apply$mcVI$sp(\u003cconsole\u003e:40)\n  at $anonfun$1.apply(\u003cconsole\u003e:39)\n  at $anonfun$1.apply(\u003cconsole\u003e:39)\n  at scala.collection.Iterator$class.foreach(Iterator.scala:893)\n  at scala.collection.AbstractIterator.foreach(Iterator.scala:1336)\n  ... 54 elided\nCaused by: java.lang.OutOfMemoryError\n  at java.io.ByteArrayOutputStream.hugeCapacity(ByteArrayOutputStream.java:123)\n  at java.io.ByteArrayOutputStream.grow(ByteArrayOutputStream.java:117)\n  at java.io.ByteArrayOutputStream.ensureCapacity(ByteArrayOutputStream.java:93)\n  at java.io.ByteArrayOutputStream.write(ByteArrayOutputStream.java:153)\n  at org.apache.spark.util.ByteBufferOutputStream.write(ByteBufferOutputStream.scala:41)\n  at java.io.ObjectOutputStream$BlockDataOutputStream.drain(ObjectOutputStream.java:1877)\n  at java.io.ObjectOutputStream$BlockDataOutputStream.setBlockDataMode(ObjectOutputStream.java:1786)\n  at java.io.ObjectOutputStream.writeObject0(ObjectOutputStream.java:1189)\n  at java.io.ObjectOutputStream.writeObject(ObjectOutputStream.java:348)\n  at org.apache.spark.serializer.JavaSerializationStream.writeObject(JavaSerializer.scala:43)\n  at org.apache.spark.serializer.JavaSerializerInstance.serialize(JavaSerializer.scala:100)\n  at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:393)\n  ... 3 more\n"
+          }
+        ]
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "http://spark-master-000:4040/jobs/job?id\u003d0"
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "apps": [],
+      "jobName": "paragraph_1554479927105_1732958375",
+      "id": "20190405-155847_999370164",
+      "dateCreated": "2019-04-05 15:58:47.106",
+      "dateStarted": "2019-04-05 16:45:59.923",
+      "dateFinished": "2019-04-05 16:54:31.682",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-04-05 16:35:39.889",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1554482139887_1894873368",
+      "id": "20190405-163539_1238428036",
+      "dateCreated": "2019-04-05 16:35:39.887",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "SNP Call overhead",
+  "id": "2E7DJ8S8V",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

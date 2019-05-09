@@ -1,0 +1,824 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n### Data ingestion (HDFS)",
+      "user": "anonymous",
+      "dateUpdated": "2019-01-24 08:34:58.218",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eData ingestion (HDFS)\u003c/h3\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1548083357888_972541376",
+      "id": "20190121-150917_819817706",
+      "dateCreated": "2019-01-21 15:09:17.888",
+      "dateStarted": "2019-01-24 08:34:58.220",
+      "dateFinished": "2019-01-24 08:34:58.228",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sh\n# Ingest data SureChEMBL\nSureChEMBL\u003d\"surechembl_p0.0.sdf\nsurechembl_p0.1.sdf\nsurechembl_p0.10.sdf\nsurechembl_p0.11.sdf\nsurechembl_p0.12.sdf\nsurechembl_p0.13.sdf\nsurechembl_p0.2.sdf\nsurechembl_p0.3.sdf\nsurechembl_p0.4.sdf\nsurechembl_p0.5.sdf\nsurechembl_p0.6.sdf\nsurechembl_p0.7.sdf\nsurechembl_p0.8.sdf\nsurechembl_p0.9.sdf\nsurechembl_p1.0.sdf\nsurechembl_p1.1.sdf\n\"\n\nhadoop fs -mkdir hdfs://spark-marco-master-000/surechembl\nfor filename in $SureChEMBL; do\n    curl http://zinc.docking.org/db/byvendor/surechembl/$filename.gz | gunzip | hadoop fs -Ddfs.block.size\u003d32M -put - hdfs://spark-marco-master-000/surechembl/$filename\ndone",
+      "user": "anonymous",
+      "dateUpdated": "2019-01-24 12:57:02.574",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {
+          "SureChEMBL[@]": "",
+          "SureChEMBL": "",
+          "filename%.*": ""
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0 88.6M    0 77769    0     0  48852      0  0:31:42  0:00:01  0:31:41 48849\r  0 88.6M    0  359k    0     0   138k      0  0:10:54  0:00:02  0:10:52  138k\r  1 88.6M    1 1046k    0     0   290k      0  0:05:12  0:00:03  0:05:09  290k\r  2 88.6M    2 2393k    0     0   538k      0  0:02:48  0:00:04  0:02:44  538k\r  4 88.6M    4 4423k    0     0   811k      0  0:01:51  0:00:05  0:01:46  895k\r  8 88.6M    8 7599k    0     0  1176k      0  0:01:17  0:00:06  0:01:11 1545k\r 13 88.6M   13 11.6M    0     0  1603k      0  0:00:56  0:00:07  0:00:49 2387k\r 19 88.6M   19 17.4M    0     0  2120k      0  0:00:42  0:00:08  0:00:34 3477k\r 28 88.6M   28 25.3M    0     0  2744k      0  0:00:33  0:00:09  0:00:24 4706k\r 40 88.6M   40 35.4M    0     0  3477k      0  0:00:26  0:00:10  0:00:16 6382k\r 54 88.6M   54 48.2M    0     0  4315k      0  0:00:21  0:00:11  0:00:10 8380k\r 69 88.6M   69 61.8M    0     0  5092k      0  0:00:17  0:00:12  0:00:05 10.0M\r 85 88.6M   85 75.5M    0     0  5753k      0  0:00:15  0:00:13  0:00:02 11.6M\r100 88.6M  100 88.6M    0     0  6306k      0  0:00:14  0:00:14 --:--:-- 12.8M\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0 88.6M    0  109k    0     0  63063      0  0:24:33  0:00:01  0:24:32 63054\r  0 88.6M    0  374k    0     0   143k      0  0:10:33  0:00:02  0:10:31  143k\r  1 88.6M    1  983k    0     0   268k      0  0:05:37  0:00:03  0:05:34  268k\r  2 88.6M    2 2169k    0     0   460k      0  0:03:16  0:00:04  0:03:12  460k\r  4 88.6M    4 4092k    0     0   733k      0  0:02:03  0:00:05  0:01:58  839k\r  7 88.6M    7 6513k    0     0   987k      0  0:01:31  0:00:06  0:01:25 1328k\r 11 88.6M   11 10.4M    0     0  1395k      0  0:01:04  0:00:07  0:00:57 2048k\r 18 88.6M   18 16.0M    0     0  1888k      0  0:00:48  0:00:08  0:00:40 3068k\r 23 88.6M   23 21.2M    0     0  2267k      0  0:00:40  0:00:09  0:00:31 4017k\r 29 88.6M   29 26.2M    0     0  2536k      0  0:00:35  0:00:10  0:00:25 4549k\r 36 88.6M   36 31.9M    0     0  2819k      0  0:00:32  0:00:11  0:00:21 5233k\r 43 88.6M   43 38.2M    0     0  3101k      0  0:00:29  0:00:12  0:00:17 5705k\r 50 88.6M   50 44.9M    0     0  3359k      0  0:00:27  0:00:13  0:00:14 5909k\r 57 88.6M   57 51.1M    0     0  3596k      0  0:00:25  0:00:14  0:00:11 6141k\r 64 88.6M   64 57.3M    0     0  3768k      0  0:00:24  0:00:15  0:00:09 6378k\r 72 88.6M   72 64.2M    0     0  3955k      0  0:00:22  0:00:16  0:00:06 6573k\r 80 88.6M   80 71.2M    0     0  4125k      0  0:00:21  0:00:17  0:00:04 6694k\r 87 88.6M   87 77.8M    0     0  4293k      0  0:00:21  0:00:18  0:00:03 6909k\r 94 88.6M   94 84.0M    0     0  4397k      0  0:00:20  0:00:19  0:00:01 6732k\r100 88.6M  100 88.6M    0     0  4485k      0  0:00:20  0:00:20 --:--:-- 6888k\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0 88.7M    0 16280    0     0  17070      0  1:30:52 --:--:--  1:30:52 17064\r  0 88.7M    0  224k    0     0   111k      0  0:13:33  0:00:02  0:13:31  111k\r  0 88.7M    0  652k    0     0   223k      0  0:06:46  0:00:02  0:06:44  223k\r  1 88.7M    1 1412k    0     0   359k      0  0:04:12  0:00:03  0:04:09  359k\r  3 88.7M    3 2826k    0     0   572k      0  0:02:38  0:00:04  0:02:34  572k\r  5 88.7M    5 5330k    0     0   890k      0  0:01:42  0:00:05  0:01:37 1056k\r  8 88.7M    8 8074k    0     0  1171k      0  0:01:17  0:00:06  0:01:11 1606k\r 11 88.7M   11 10.4M    0     0  1349k      0  0:01:07  0:00:07  0:01:00 2008k\r 15 88.7M   15 13.3M    0     0  1534k      0  0:00:59  0:00:08  0:00:51 2462k\r 18 88.7M   18 16.6M    0     0  1720k      0  0:00:52  0:00:09  0:00:43 2866k\r 22 88.7M   22 20.0M    0     0  1881k      0  0:00:48  0:00:10  0:00:38 3087k\r 26 88.7M   26 23.2M    0     0  2004k      0  0:00:45  0:00:11  0:00:34 3151k\r 29 88.7M   29 26.3M    0     0  2094k      0  0:00:43  0:00:12  0:00:31 3270k\r 33 88.7M   33 29.5M    0     0  2175k      0  0:00:41  0:00:13  0:00:28 3313k\r 36 88.7M   36 32.2M    0     0  2212k      0  0:00:41  0:00:14  0:00:27 3182k\r 39 88.7M   39 35.0M    0     0  2256k      0  0:00:40  0:00:15  0:00:25 3073k\r 42 88.7M   42 38.0M    0     0  2307k      0  0:00:39  0:00:16  0:00:23 3027k\r 46 88.7M   46 41.1M    0     0  2355k      0  0:00:38  0:00:17  0:00:21 3029k\r 50 88.7M   50 44.6M    0     0  2411k      0  0:00:37  0:00:18  0:00:19 3065k\r 54 88.7M   54 48.0M    0     0  2474k      0  0:00:36  0:00:19  0:00:17 3258k\r 57 88.7M   57 51.3M    0     0  2515k      0  0:00:36  0:00:20  0:00:16 3335k\r 61 88.7M   61 54.4M    0     0  2546k      0  0:00:35  0:00:21  0:00:14 3352k\r 65 88.7M   65 57.9M    0     0  2589k      0  0:00:35  0:00:22  0:00:13 3424k\r 69 88.7M   69 61.4M    0     0  2631k      0  0:00:34  0:00:23  0:00:11 3468k\r 73 88.7M   73 64.8M    0     0  2667k      0  0:00:34  0:00:24  0:00:10 3437k\r 76 88.7M   76 68.2M    0     0  2696k      0  0:00:33  0:00:25  0:00:08 3459k\r 81 88.7M   81 71.9M    0     0  2740k      0  0:00:33  0:00:26  0:00:07 3589k\r 85 88.7M   85 76.1M    0     0  2792k      0  0:00:32  0:00:27  0:00:05 3723k\r 90 88.7M   90 80.6M    0     0  2858k      0  0:00:31  0:00:28  0:00:03 3948k\r 96 88.7M   96 85.2M    0     0  2921k      0  0:00:31  0:00:29  0:00:02 4184k\r100 88.7M  100 88.7M    0     0  2977k      0  0:00:30  0:00:30 --:--:-- 4549k\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0 88.7M    0 27863    0     0  28884      0  0:53:42 --:--:--  0:53:42 28873\r  0 88.7M    0  212k    0     0   106k      0  0:14:14  0:00:02  0:14:12  106k\r  0 88.7M    0  797k    0     0   262k      0  0:05:45  0:00:03  0:05:42  262k\r  2 88.7M    2 1961k    0     0   501k      0  0:03:01  0:00:03  0:02:58  501k\r  4 88.7M    4 3884k    0     0   791k      0  0:01:54  0:00:04  0:01:50  791k\r  7 88.7M    7 6724k    0     0  1136k      0  0:01:19  0:00:05  0:01:14 1352k\r 11 88.7M   11 10.2M    0     0  1512k      0  0:01:00  0:00:06  0:00:54 2080k\r 16 88.7M   16 14.8M    0     0  1914k      0  0:00:47  0:00:07  0:00:40 2938k\r 22 88.7M   22 20.3M    0     0  2256k      0  0:00:40  0:00:09  0:00:31 3547k\r 27 88.7M   27 24.5M    0     0  2498k      0  0:00:36  0:00:10  0:00:26 4123k\r 31 88.7M   31 27.5M    0     0  2589k      0  0:00:35  0:00:10  0:00:25 4312k\r 34 88.7M   34 30.6M    0     0  2634k      0  0:00:34  0:00:11  0:00:23 4207k\r 38 88.7M   38 34.3M    0     0  2712k      0  0:00:33  0:00:12  0:00:21 3974k\r 42 88.7M   42 38.0M    0     0  2785k      0  0:00:32  0:00:13  0:00:19 3810k\r 47 88.7M   47 41.8M    0     0  2851k      0  0:00:31  0:00:15  0:00:16 3568k\r 51 88.7M   51 45.5M    0     0  2933k      0  0:00:30  0:00:15  0:00:15 3682k\r 55 88.7M   55 49.1M    0     0  2977k      0  0:00:30  0:00:16  0:00:14 3797k\r 59 88.7M   59 52.4M    0     0  2998k      0  0:00:30  0:00:17  0:00:13 3742k\r 63 88.7M   63 56.2M    0     0  3041k      0  0:00:29  0:00:18  0:00:11 3762k\r 67 88.7M   67 60.1M    0     0  3083k      0  0:00:29  0:00:19  0:00:10 3784k\r 72 88.7M   72 64.1M    0     0  3141k      0  0:00:28  0:00:20  0:00:08 3804k\r 77 88.7M   77 68.3M    0     0  3191k      0  0:00:28  0:00:21  0:00:07 3910k\r 81 88.7M   81 72.5M    0     0  3244k      0  0:00:28  0:00:22  0:00:06 4126k\r 86 88.7M   86 76.9M    0     0  3295k      0  0:00:27  0:00:23  0:00:04 4264k\r 92 88.7M   92 82.2M    0     0  3379k      0  0:00:26  0:00:24  0:00:02 4574k\r 99 88.7M   99 88.3M    0     0  3484k      0  0:00:26  0:00:25  0:00:01 4909k\r100 88.7M  100 88.7M    0     0  3497k      0  0:00:25  0:00:25 --:--:-- 5156k\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0 88.7M    0  3972    0     0   8435      0  3:03:50 --:--:--  3:03:50  8433\r  0 88.7M    0  100k    0     0  56851      0  0:27:16  0:00:01  0:27:15 56845\r  0 88.7M    0  558k    0     0   214k      0  0:07:03  0:00:02  0:07:01  214k\r  1 88.7M    1 1601k    0     0   444k      0  0:03:24  0:00:03  0:03:21  444k\r  3 88.7M    3 3556k    0     0   772k      0  0:01:57  0:00:04  0:01:53  772k\r  7 88.7M    7 6752k    0     0  1204k      0  0:01:15  0:00:05  0:01:10 1314k\r 11 88.7M   11 10.4M    0     0  1625k      0  0:00:55  0:00:06  0:00:49 2219k\r 16 88.7M   16 15.0M    0     0  2062k      0  0:00:44  0:00:07  0:00:37 3051k\r 23 88.7M   23 20.4M    0     0  2476k      0  0:00:36  0:00:08  0:00:28 3983k\r 30 88.7M   30 26.7M    0     0  2892k      0  0:00:31  0:00:09  0:00:22 4902k\r 38 88.7M   38 33.8M    0     0  3318k      0  0:00:27  0:00:10  0:00:17 5762k\r 45 88.7M   45 40.5M    0     0  3621k      0  0:00:25  0:00:11  0:00:14 6341k\r 52 88.7M   52 47.0M    0     0  3863k      0  0:00:23  0:00:12  0:00:11 6546k\r 58 88.7M   58 51.8M    0     0  3939k      0  0:00:23  0:00:13  0:00:10 6409k\r 64 88.7M   64 56.9M    0     0  4023k      0  0:00:22  0:00:14  0:00:08 6149k\r 70 88.7M   70 62.1M    0     0  4108k      0  0:00:22  0:00:15  0:00:07 5748k\r 76 88.7M   76 67.5M    0     0  4200k      0  0:00:21  0:00:16  0:00:05 5527k\r 82 88.7M   82 72.9M    0     0  4277k      0  0:00:21  0:00:17  0:00:04 5308k\r 88 88.7M   88 78.3M    0     0  4346k      0  0:00:20  0:00:18  0:00:02 5444k\r 94 88.7M   94 83.6M    0     0  4401k      0  0:00:20  0:00:19  0:00:01 5504k\r100 88.7M  100 88.7M    0     0  4466k      0  0:00:20  0:00:20 --:--:-- 5607k\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0 2724k    0  4023    0     0   5815      0  0:07:59 --:--:--  0:07:59  5813\r  3 2724k    3  102k    0     0  63640      0  0:00:43  0:00:01  0:00:42 63637\r 25 2724k   25  698k    0     0   256k      0  0:00:10  0:00:02  0:00:08  256k\r 60 2724k   60 1649k    0     0   440k      0  0:00:06  0:00:03  0:00:03  440k\r100 2724k  100 2724k    0     0   620k      0  0:00:04  0:00:04 --:--:--  620k\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0 88.6M    0 34415    0     0  39216      0  0:39:29 --:--:--  0:39:29 39197\r  0 88.6M    0  298k    0     0   155k      0  0:09:43  0:00:01  0:09:42  155k\r  1 88.6M    1  983k    0     0   348k      0  0:04:19  0:00:02  0:04:17  348k\r  2 88.6M    2 2420k    0     0   636k      0  0:02:22  0:00:03  0:02:19  636k\r  5 88.6M    5 4896k    0     0  1017k      0  0:01:29  0:00:04  0:01:25 1017k\r 10 88.6M   10 9376k    0     0  1607k      0  0:00:56  0:00:05  0:00:51 1885k\r 16 88.6M   16 14.6M    0     0  2196k      0  0:00:41  0:00:06  0:00:35 2996k\r 23 88.6M   23 21.2M    0     0  2781k      0  0:00:32  0:00:07  0:00:25 4154k\r 32 88.6M   32 28.9M    0     0  3368k      0  0:00:26  0:00:08  0:00:18 5445k\r 42 88.6M   42 37.2M    0     0  3896k      0  0:00:23  0:00:09  0:00:14 6677k\r 53 88.6M   53 47.1M    0     0  4466k      0  0:00:20  0:00:10  0:00:10 7824k\r 66 88.6M   66 59.2M    0     0  5134k      0  0:00:17  0:00:11  0:00:06 9151k\r 81 88.6M   81 72.3M    0     0  5764k      0  0:00:15  0:00:12  0:00:03 10.1M\r 96 88.6M   96 85.5M    0     0  6345k      0  0:00:14  0:00:13  0:00:01 11.3M\r100 88.6M  100 88.6M    0     0  6467k      0  0:00:14  0:00:14 --:--:-- 12.1M\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0 88.6M    0  1076    0     0   1289      0 20:01:27 --:--:-- 20:01:27  1288\r  0 88.6M    0 61239    0     0  41876      0  0:36:58  0:00:01  0:36:57 41858\r  0 88.6M    0  283k    0     0   113k      0  0:13:22  0:00:02  0:13:20  113k\r  0 88.6M    0  604k    0     0   180k      0  0:08:21  0:00:03  0:08:18  180k\r  1 88.6M    1 1309k    0     0   298k      0  0:05:03  0:00:04  0:04:59  298k\r  2 88.6M    2 2503k    0     0   461k      0  0:03:16  0:00:05  0:03:11  544k\r  4 88.6M    4 4402k    0     0   680k      0  0:02:13  0:00:06  0:02:07  867k\r  7 88.6M    7 6636k    0     0   908k      0  0:01:39  0:00:07  0:01:32 1323k\r 11 88.6M   11 10.5M    0     0  1291k      0  0:01:10  0:00:08  0:01:02 2031k\r 17 88.6M   17 15.9M    0     0  1749k      0  0:00:51  0:00:09  0:00:42 3036k\r 25 88.6M   25 23.0M    0     0  2284k      0  0:00:39  0:00:10  0:00:29 4304k\r 34 88.6M   34 30.4M    0     0  2760k      0  0:00:32  0:00:11  0:00:21 5544k\r 44 88.6M   44 39.3M    0     0  3270k      0  0:00:27  0:00:12  0:00:15 6710k\r 56 88.6M   56 50.2M    0     0  3863k      0  0:00:23  0:00:13  0:00:10 8182k\r 70 88.6M   70 62.4M    0     0  4467k      0  0:00:20  0:00:14  0:00:06 9557k\r 84 88.6M   84 74.5M    0     0  4985k      0  0:00:18  0:00:15  0:00:03 10.3M\r 97 88.6M   97 86.8M    0     0  5452k      0  0:00:16  0:00:16 --:--:-- 11.2M\r100 88.6M  100 88.6M    0     0  5539k      0  0:00:16  0:00:16 --:--:-- 12.1M\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0 88.6M    0  2524    0     0   5334      0  4:50:20 --:--:--  4:50:20  5324\r  0 88.6M    0  106k    0     0  63284      0  0:24:28  0:00:01  0:24:27 63275\r  0 88.6M    0  550k    0     0   211k      0  0:07:09  0:00:02  0:07:07  211k\r  1 88.6M    1 1372k    0     0   393k      0  0:03:50  0:00:03  0:03:47  393k\r  2 88.6M    2 2672k    0     0   596k      0  0:02:32  0:00:04  0:02:28  596k\r  6 88.6M    6 5447k    0     0   984k      0  0:01:32  0:00:05  0:01:27 1076k\r 10 88.6M   10 9681k    0     0  1499k      0  0:01:00  0:00:06  0:00:54 2021k\r 17 88.6M   17 15.2M    0     0  2083k      0  0:00:43  0:00:07  0:00:36 3084k\r 25 88.6M   25 22.5M    0     0  2725k      0  0:00:33  0:00:08  0:00:25 4363k\r 36 88.6M   36 32.0M    0     0  3450k      0  0:00:26  0:00:09  0:00:17 5999k\r 48 88.6M   48 42.9M    0     0  4202k      0  0:00:21  0:00:10  0:00:11 7814k\r 61 88.6M   61 54.7M    0     0  4891k      0  0:00:18  0:00:11  0:00:07 9273k\r 76 88.6M   76 67.5M    0     0  5548k      0  0:00:16  0:00:12  0:00:04 10.4M\r 91 88.6M   91 81.2M    0     0  6166k      0  0:00:14  0:00:13  0:00:01 11.6M\r100 88.6M  100 88.6M    0     0  6471k      0  0:00:14  0:00:14 --:--:-- 12.5M\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0 88.5M    0 46072    0     0  41914      0  0:36:54  0:00:01  0:36:53 41921\r  0 88.5M    0  323k    0     0   152k      0  0:09:56  0:00:02  0:09:54  152k\r  1 88.5M    1  934k    0     0   315k      0  0:04:47  0:00:02  0:04:45  315k\r  2 88.5M    2 2164k    0     0   542k      0  0:02:46  0:00:03  0:02:43  542k\r  4 88.5M    4 4383k    0     0   880k      0  0:01:42  0:00:04  0:01:38  880k\r  9 88.5M    9 8423k    0     0  1408k      0  0:01:04  0:00:05  0:00:59 1715k\r 16 88.5M   16 14.4M    0     0  2110k      0  0:00:42  0:00:06  0:00:36 2966k\r 24 88.5M   24 21.9M    0     0  2804k      0  0:00:32  0:00:08  0:00:24 4268k\r 36 88.5M   36 32.4M    0     0  3694k      0  0:00:24  0:00:08  0:00:16 6205k\r 49 88.5M   49 44.1M    0     0  4538k      0  0:00:19  0:00:09  0:00:10 8185k\r 64 88.5M   64 57.1M    0     0  5336k      0  0:00:16  0:00:10  0:00:06  9.8M\r 79 88.5M   79 70.5M    0     0  6039k      0  0:00:15  0:00:11  0:00:04 11.2M\r 94 88.5M   94 83.5M    0     0  6594k      0  0:00:13  0:00:12  0:00:01 12.4M\r100 88.5M  100 88.5M    0     0  6787k      0  0:00:13  0:00:13 --:--:-- 12.8M\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0 88.6M    0  100k    0     0  59394      0  0:26:04  0:00:01  0:26:03 59376\r  0 88.6M    0  348k    0     0   158k      0  0:09:32  0:00:02  0:09:30  158k\r  0 88.6M    0  893k    0     0   275k      0  0:05:29  0:00:03  0:05:26  275k\r  2 88.6M    2 1886k    0     0   453k      0  0:03:20  0:00:04  0:03:16  453k\r  3 88.6M    3 3309k    0     0   645k      0  0:02:20  0:00:05  0:02:15  675k\r  6 88.6M    6 6008k    0     0   974k      0  0:01:33  0:00:06  0:01:27 1330k\r 12 88.6M   12 10.6M    0     0  1534k      0  0:00:59  0:00:07  0:00:52 2146k\r 19 88.6M   19 17.4M    0     0  2194k      0  0:00:41  0:00:08  0:00:33 3465k\r 28 88.6M   28 25.5M    0     0  2861k      0  0:00:31  0:00:09  0:00:22 4874k\r 39 88.6M   39 34.7M    0     0  3513k      0  0:00:25  0:00:10  0:00:15 6447k\r 52 88.6M   52 46.5M    0     0  4259k      0  0:00:21  0:00:11  0:00:10 8294k\r 66 88.6M   66 58.8M    0     0  4968k      0  0:00:18  0:00:12  0:00:06 9869k\r 81 88.6M   81 72.2M    0     0  5632k      0  0:00:16  0:00:13  0:00:03 10.9M\r 96 88.6M   96 85.3M    0     0  6186k      0  0:00:14  0:00:14 --:--:-- 11.9M\r100 88.6M  100 88.6M    0     0  6309k      0  0:00:14  0:00:14 --:--:-- 12.6M\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0 88.7M    0 13384    0     0  29086      0  0:53:18 --:--:--  0:53:18 29032\r  0 88.7M    0  113k    0     0  69810      0  0:22:12  0:00:01  0:22:11 69808\r  0 88.7M    0  491k    0     0   199k      0  0:07:35  0:00:02  0:07:33  199k\r  1 88.7M    1 1198k    0     0   365k      0  0:04:08  0:00:03  0:04:05  365k\r  3 88.7M    3 2784k    0     0   650k      0  0:02:19  0:00:04  0:02:15  650k\r  6 88.7M    6 5830k    0     0  1104k      0  0:01:22  0:00:05  0:01:17 1206k\r 11 88.7M   11 10.3M    0     0  1687k      0  0:00:53  0:00:06  0:00:47 2274k\r 18 88.7M   18 16.7M    0     0  2349k      0  0:00:38  0:00:07  0:00:31 3449k\r 27 88.7M   27 24.7M    0     0  3061k      0  0:00:29  0:00:08  0:00:21 4828k\r 38 88.7M   38 33.9M    0     0  3745k      0  0:00:24  0:00:09  0:00:15 6390k\r 49 88.7M   49 44.2M    0     0  4388k      0  0:00:20  0:00:10  0:00:10 7834k\r 62 88.7M   62 55.4M    0     0  5014k      0  0:00:18  0:00:11  0:00:07 9164k\r 76 88.7M   76 67.8M    0     0  5658k      0  0:00:16  0:00:12  0:00:04 10.2M\r 92 88.7M   92 81.6M    0     0  6295k      0  0:00:14  0:00:13  0:00:01 11.3M\r100 88.7M  100 88.7M    0     0  6576k      0  0:00:13  0:00:13 --:--:-- 12.1M\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0 88.6M    0 40896    0     0  36122      0  0:42:53  0:00:01  0:42:52 36095\r  0 88.6M    0  319k    0     0   149k      0  0:10:09  0:00:02  0:10:07  149k\r  0 88.6M    0  837k    0     0   278k      0  0:05:25  0:00:03  0:05:22  278k\r  2 88.6M    2 1962k    0     0   487k      0  0:03:06  0:00:04  0:03:02  487k\r  4 88.6M    4 3859k    0     0   770k      0  0:01:57  0:00:05  0:01:52  772k\r  7 88.6M    7 6944k    0     0  1151k      0  0:01:18  0:00:06  0:01:12 1409k\r 12 88.6M   12 11.3M    0     0  1650k      0  0:00:54  0:00:07  0:00:47 2308k\r 20 88.6M   20 18.0M    0     0  2300k      0  0:00:39  0:00:08  0:00:31 3514k\r 28 88.6M   28 24.9M    0     0  2801k      0  0:00:32  0:00:09  0:00:23 4632k\r 37 88.6M   37 33.1M    0     0  3361k      0  0:00:27  0:00:10  0:00:17 5920k\r 45 88.6M   45 40.1M    0     0  3738k      0  0:00:24  0:00:11  0:00:13 6871k\r 53 88.6M   53 47.6M    0     0  4065k      0  0:00:22  0:00:12  0:00:10 7490k\r 62 88.6M   62 55.3M    0     0  4355k      0  0:00:20  0:00:13  0:00:07 7652k\r 71 88.6M   71 63.6M    0     0  4656k      0  0:00:19  0:00:14  0:00:05 8111k\r 81 88.6M   81 72.4M    0     0  4937k      0  0:00:18  0:00:15  0:00:03 8157k\r 91 88.6M   91 81.1M    0     0  5194k      0  0:00:17  0:00:16  0:00:01 8399k\r100 88.6M  100 88.6M    0     0  5383k      0  0:00:16  0:00:16 --:--:-- 8646k\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0 88.6M    0 17728    0     0  23609      0  1:05:35 --:--:--  1:05:35 23605\r  0 88.6M    0  221k    0     0   120k      0  0:12:33  0:00:01  0:12:32  120k\r  0 88.6M    0  583k    0     0   202k      0  0:07:28  0:00:02  0:07:26  202k\r  1 88.6M    1 1117k    0     0   300k      0  0:05:01  0:00:03  0:04:58  300k\r  2 88.6M    2 2241k    0     0   470k      0  0:03:12  0:00:04  0:03:08  470k\r  4 88.6M    4 4053k    0     0   697k      0  0:02:10  0:00:05  0:02:05  797k\r  7 88.6M    7 6746k    0     0   998k      0  0:01:30  0:00:06  0:01:24 1327k\r 10 88.6M   10 9916k    0     0  1289k      0  0:01:10  0:00:07  0:01:03 1941k\r 16 88.6M   16 14.9M    0     0  1748k      0  0:00:51  0:00:08  0:00:43 2821k\r 24 88.6M   24 21.4M    0     0  2246k      0  0:00:40  0:00:09  0:00:31 3935k\r 32 88.6M   32 28.5M    0     0  2735k      0  0:00:33  0:00:10  0:00:23 5163k\r 41 88.6M   41 36.5M    0     0  3203k      0  0:00:28  0:00:11  0:00:17 6223k\r 52 88.6M   52 46.4M    0     0  3743k      0  0:00:24  0:00:12  0:00:12 7503k\r 66 88.6M   66 58.7M    0     0  4396k      0  0:00:20  0:00:13  0:00:07 9066k\r 80 88.6M   80 71.3M    0     0  4976k      0  0:00:18  0:00:14  0:00:04 10.1M\r 95 88.6M   95 84.2M    0     0  5490k      0  0:00:16  0:00:15  0:00:01 11.0M\r100 88.6M  100 88.6M    0     0  5664k      0  0:00:16  0:00:16 --:--:-- 12.0M\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0 90.3M    0 94544    0     0  75247      0  0:20:58  0:00:01  0:20:57 75214\r  0 90.3M    0  426k    0     0   185k      0  0:08:19  0:00:02  0:08:17  185k\r  1 90.3M    1 1319k    0     0   399k      0  0:03:51  0:00:03  0:03:48  399k\r  3 90.3M    3 2887k    0     0   669k      0  0:02:18  0:00:04  0:02:14  669k\r  5 90.3M    5 5226k    0     0   980k      0  0:01:34  0:00:05  0:01:29 1024k\r  9 90.3M    9 8495k    0     0  1359k      0  0:01:08  0:00:06  0:01:02 1683k\r 13 90.3M   13 11.8M    0     0  1655k      0  0:00:55  0:00:07  0:00:48 2325k\r 18 90.3M   18 16.5M    0     0  2063k      0  0:00:44  0:00:08  0:00:36 3182k\r 23 90.3M   23 20.8M    0     0  2314k      0  0:00:39  0:00:09  0:00:30 3762k\r 28 90.3M   28 25.4M    0     0  2550k      0  0:00:36  0:00:10  0:00:26 4259k\r 33 90.3M   33 30.3M    0     0  2768k      0  0:00:33  0:00:11  0:00:22 4538k\r 39 90.3M   39 35.2M    0     0  2959k      0  0:00:31  0:00:12  0:00:19 4930k\r 44 90.3M   44 40.2M    0     0  3118k      0  0:00:29  0:00:13  0:00:16 4850k\r 50 90.3M   50 45.3M    0     0  3266k      0  0:00:28  0:00:14  0:00:14 5021k\r 55 90.3M   55 50.5M    0     0  3400k      0  0:00:27  0:00:15  0:00:12 5142k\r 61 90.3M   61 55.7M    0     0  3521k      0  0:00:26  0:00:16  0:00:10 5215k\r 67 90.3M   67 60.9M    0     0  3627k      0  0:00:25  0:00:17  0:00:08 5257k\r 73 90.3M   73 66.1M    0     0  3719k      0  0:00:24  0:00:18  0:00:06 5306k\r 79 90.3M   79 71.4M    0     0  3807k      0  0:00:24  0:00:19  0:00:05 5345k\r 85 90.3M   85 76.8M    0     0  3893k      0  0:00:23  0:00:20  0:00:03 5394k\r 91 90.3M   91 82.4M    0     0  3979k      0  0:00:23  0:00:21  0:00:02 5461k\r 97 90.3M   97 88.2M    0     0  4067k      0  0:00:22  0:00:22 --:--:-- 5582k\r100 90.3M  100 90.3M    0     0  4110k      0  0:00:22  0:00:22 --:--:-- 5772k\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0 80.0M    0  8316    0     0  17688      0  1:19:04 --:--:--  1:19:04 17693\r  0 80.0M    0  101k    0     0  64018      0  0:21:50  0:00:01  0:21:49 63989\r  0 80.0M    0  452k    0     0   191k      0  0:07:07  0:00:02  0:07:05  191k\r  1 80.0M    1 1252k    0     0   368k      0  0:03:42  0:00:03  0:03:39  368k\r  2 80.0M    2 2397k    0     0   560k      0  0:02:26  0:00:04  0:02:22  560k\r  5 80.0M    5 4809k    0     0   909k      0  0:01:30  0:00:05  0:01:25  996k\r 10 80.0M   10 8745k    0     0  1380k      0  0:00:59  0:00:06  0:00:53 1834k\r 16 80.0M   16 12.9M    0     0  1829k      0  0:00:44  0:00:07  0:00:37 2619k\r 22 80.0M   22 17.8M    0     0  2218k      0  0:00:36  0:00:08  0:00:28 3516k\r 30 80.0M   30 24.1M    0     0  2669k      0  0:00:30  0:00:09  0:00:21 4474k\r 40 80.0M   40 32.0M    0     0  3179k      0  0:00:25  0:00:10  0:00:15 5565k\r 51 80.0M   51 40.9M    0     0  3725k      0  0:00:21  0:00:11  0:00:10 6748k\r 63 80.0M   63 50.5M    0     0  4224k      0  0:00:19  0:00:12  0:00:07 7693k\r 76 80.0M   76 61.2M    0     0  4739k      0  0:00:17  0:00:13  0:00:04 8901k\r 87 80.0M   87 69.7M    0     0  5009k      0  0:00:16  0:00:14  0:00:02 9362k\r 97 80.0M   97 78.3M    0     0  5264k      0  0:00:15  0:00:15 --:--:-- 9626k\r100 80.0M  100 80.0M    0     0  5347k      0  0:00:15  0:00:15 --:--:-- 9814k\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1548077087777_1297959312",
+      "id": "20190121-132447_758571491",
+      "dateCreated": "2019-01-21 13:24:47.777",
+      "dateStarted": "2019-01-24 12:57:03.281",
+      "dateFinished": "2019-01-24 13:01:45.304",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sh\n# Ingest data AKSci\nAKSci\u003d\"aksci_p0.0.sdf\naksci_p1.0.sdf\"\n\nhadoop fs -mkdir hdfs://spark-marco-master-000/aksci\nfor filename in $AKSci; do\n    curl http://zinc.docking.org/db/byvendor/aksci/$filename.gz | gunzip | hadoop fs -Ddfs.block.size\u003d2509K -put - hdfs://spark-marco-master-000/aksci/$filename\ndone",
+      "user": "anonymous",
+      "dateUpdated": "2019-01-26 09:22:56.687",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0 42.1M    0 19936    0     0  20332      0  0:36:11 --:--:--  0:36:11 20322\r  0 42.1M    0  178k    0     0  91710      0  0:08:01  0:00:01  0:08:00 91707\r  1 42.1M    1  665k    0     0   220k      0  0:03:15  0:00:03  0:03:12  220k\r  4 42.1M    4 1843k    0     0   471k      0  0:01:31  0:00:03  0:01:28  471k\r  8 42.1M    8 3862k    0     0   791k      0  0:00:54  0:00:04  0:00:50  791k\r 15 42.1M   15 6743k    0     0  1147k      0  0:00:37  0:00:05  0:00:32 1373k\r 26 42.1M   26 11.2M    0     0  1678k      0  0:00:25  0:00:06  0:00:19 2328k\r 45 42.1M   45 19.3M    0     0  2508k      0  0:00:17  0:00:07  0:00:10 3921k\r 67 42.1M   67 28.3M    0     0  3274k      0  0:00:13  0:00:08  0:00:05 5476k\r 88 42.1M   88 37.1M    0     0  3850k      0  0:00:11  0:00:09  0:00:02 6838k\r100 42.1M  100 42.1M    0     0  4155k      0  0:00:10  0:00:10 --:--:-- 8082k\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0 3643k    0 18454    0     0  19000      0  0:03:16 --:--:--  0:03:16 18985\r  5 3643k    5  208k    0     0   105k      0  0:00:34  0:00:01  0:00:33  105k\r 20 3643k   20  737k    0     0   245k      0  0:00:14  0:00:03  0:00:11  245k\r 47 3643k   47 1747k    0     0   435k      0  0:00:08  0:00:04  0:00:04  435k\r100 3643k  100 3643k    0     0   751k      0  0:00:04  0:00:04 --:--:--  751k\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1548077378076_2035999675",
+      "id": "20190121-132938_520619890",
+      "dateCreated": "2019-01-21 13:29:38.076",
+      "dateStarted": "2019-01-26 09:22:57.587",
+      "dateFinished": "2019-01-26 09:23:18.052",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sh\n# Persist aksci in cPouta\nhadoop distcp hdfs://spark-marco-master-000/aksci swift://mare.cpouta/aksci",
+      "user": "anonymous",
+      "dateUpdated": "2019-01-24 08:57:34.126",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "2019-01-24 08:57:35,951 INFO  [main] Configuration.deprecation (Configuration.java:warnOnceIfDeprecated(1243)) - topology.node.switch.mapping.impl is deprecated. Instead, use net.topology.node.switch.mapping.impl\n2019-01-24 08:57:37,634 INFO  [main] tools.DistCp (DistCp.java:run(117)) - Input Options: DistCpOptions{atomicCommit\u003dfalse, syncFolder\u003dfalse, deleteMissing\u003dfalse, ignoreFailures\u003dfalse, maxMaps\u003d20, sslConfigurationFile\u003d\u0027null\u0027, copyStrategy\u003d\u0027uniformsize\u0027, sourceFileListing\u003dnull, sourcePaths\u003d[hdfs://spark-marco-master-000/aksci], targetPath\u003dswift://mare.cpouta/aksci, targetPathExists\u003dfalse, preserveRawXattrs\u003dfalse}\n2019-01-24 08:57:37,650 INFO  [main] Configuration.deprecation (Configuration.java:warnOnceIfDeprecated(1243)) - session.id is deprecated. Instead, use dfs.metrics.session-id\n2019-01-24 08:57:37,651 INFO  [main] jvm.JvmMetrics (JvmMetrics.java:init(76)) - Initializing JVM Metrics with processName\u003dJobTracker, sessionId\u003d\n2019-01-24 08:57:38,459 INFO  [main] Configuration.deprecation (Configuration.java:warnOnceIfDeprecated(1243)) - io.sort.mb is deprecated. Instead, use mapreduce.task.io.sort.mb\n2019-01-24 08:57:38,460 INFO  [main] Configuration.deprecation (Configuration.java:warnOnceIfDeprecated(1243)) - io.sort.factor is deprecated. Instead, use mapreduce.task.io.sort.factor\n2019-01-24 08:57:38,493 INFO  [main] jvm.JvmMetrics (JvmMetrics.java:init(71)) - Cannot initialize JVM Metrics with processName\u003dJobTracker, sessionId\u003d - already initialized\n2019-01-24 08:57:38,526 INFO  [main] mapreduce.JobSubmitter (JobSubmitter.java:submitJobInternal(198)) - number of splits:1\n2019-01-24 08:57:38,609 INFO  [main] mapreduce.JobSubmitter (JobSubmitter.java:printTokens(287)) - Submitting tokens for job: job_local2098178962_0001\n2019-01-24 08:57:38,730 INFO  [main] mapreduce.Job (Job.java:submit(1294)) - The url to track the job: http://localhost:8080/\n2019-01-24 08:57:38,730 INFO  [main] tools.DistCp (DistCp.java:createAndSubmitJob(193)) - DistCp job-id: job_local2098178962_0001\n2019-01-24 08:57:38,731 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1339)) - Running job: job_local2098178962_0001\n2019-01-24 08:57:38,732 INFO  [Thread-6] mapred.LocalJobRunner (LocalJobRunner.java:createOutputCommitter(471)) - OutputCommitter set in config null\n2019-01-24 08:57:38,738 INFO  [Thread-6] output.FileOutputCommitter (FileOutputCommitter.java:\u003cinit\u003e(108)) - File Output Committer Algorithm version is 1\n2019-01-24 08:57:38,740 INFO  [Thread-6] mapred.LocalJobRunner (LocalJobRunner.java:createOutputCommitter(489)) - OutputCommitter is org.apache.hadoop.tools.mapred.CopyCommitter\n2019-01-24 08:57:38,780 INFO  [Thread-6] mapred.LocalJobRunner (LocalJobRunner.java:runTasks(448)) - Waiting for map tasks\n2019-01-24 08:57:38,780 INFO  [LocalJobRunner Map Task Executor #0] mapred.LocalJobRunner (LocalJobRunner.java:run(224)) - Starting task: attempt_local2098178962_0001_m_000000_0\n2019-01-24 08:57:38,809 INFO  [LocalJobRunner Map Task Executor #0] output.FileOutputCommitter (FileOutputCommitter.java:\u003cinit\u003e(108)) - File Output Committer Algorithm version is 1\n2019-01-24 08:57:38,826 INFO  [LocalJobRunner Map Task Executor #0] mapred.Task (Task.java:initialize(614)) -  Using ResourceCalculatorProcessTree : [ ]\n2019-01-24 08:57:38,831 INFO  [LocalJobRunner Map Task Executor #0] mapred.MapTask (MapTask.java:runNewMapper(756)) - Processing split: file:/tmp/hadoop-root/mapred/staging/root187324987/.staging/_distcp-632842515/fileList.seq:0+510\n2019-01-24 08:57:38,842 INFO  [LocalJobRunner Map Task Executor #0] output.FileOutputCommitter (FileOutputCommitter.java:\u003cinit\u003e(108)) - File Output Committer Algorithm version is 1\n2019-01-24 08:57:38,964 INFO  [LocalJobRunner Map Task Executor #0] mapred.CopyMapper (CopyMapper.java:map(210)) - Copying hdfs://spark-marco-master-000/aksci to swift://mare.cpouta/aksci\n2019-01-24 08:57:39,248 INFO  [LocalJobRunner Map Task Executor #0] mapred.CopyMapper (CopyMapper.java:map(210)) - Copying hdfs://spark-marco-master-000/aksci/aksci_p0.0.sdf to swift://mare.cpouta/aksci/aksci_p0.0.sdf\n2019-01-24 08:57:39,462 INFO  [LocalJobRunner Map Task Executor #0] mapred.RetriableFileCopyCommand (RetriableFileCopyCommand.java:getTmpFile(232)) - Creating temp file: swift://mare.cpouta/aksci/.distcp.tmp.attempt_local2098178962_0001_m_000000_0\n2019-01-24 08:57:39,733 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1360)) - Job job_local2098178962_0001 running in uber mode : false\n2019-01-24 08:57:39,734 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1367)) -  map 0% reduce 0%\n2019-01-24 08:57:44,819 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/aksci/aksci_p0.0.sdf to swift://mare.cpouta/aksci/aksci_p0.0.sdf [286.8M/286.8M] \u003e map\n2019-01-24 08:57:45,739 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1367)) -  map 63% reduce 0%\n2019-01-24 08:57:47,820 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/aksci/aksci_p0.0.sdf to swift://mare.cpouta/aksci/aksci_p0.0.sdf [286.8M/286.8M] \u003e map\n2019-01-24 08:57:52,930 INFO  [LocalJobRunner Map Task Executor #0] mapred.CopyMapper (CopyMapper.java:map(210)) - Copying hdfs://spark-marco-master-000/aksci/aksci_p1.0.sdf to swift://mare.cpouta/aksci/aksci_p1.0.sdf\n2019-01-24 08:57:53,132 INFO  [LocalJobRunner Map Task Executor #0] mapred.RetriableFileCopyCommand (RetriableFileCopyCommand.java:getTmpFile(232)) - Creating temp file: swift://mare.cpouta/aksci/.distcp.tmp.attempt_local2098178962_0001_m_000000_0\n2019-01-24 08:57:54,851 INFO  [LocalJobRunner Map Task Executor #0] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/aksci/aksci_p0.0.sdf to swift://mare.cpouta/aksci/aksci_p0.0.sdf [286.8M/286.8M] \u003e map\n2019-01-24 08:57:54,852 INFO  [LocalJobRunner Map Task Executor #0] mapred.Task (Task.java:done(1046)) - Task:attempt_local2098178962_0001_m_000000_0 is done. And is in the process of committing\n2019-01-24 08:57:54,853 INFO  [LocalJobRunner Map Task Executor #0] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/aksci/aksci_p0.0.sdf to swift://mare.cpouta/aksci/aksci_p0.0.sdf [286.8M/286.8M] \u003e map\n2019-01-24 08:57:54,854 INFO  [LocalJobRunner Map Task Executor #0] mapred.Task (Task.java:commit(1225)) - Task attempt_local2098178962_0001_m_000000_0 is allowed to commit now\n2019-01-24 08:57:54,854 INFO  [LocalJobRunner Map Task Executor #0] output.FileOutputCommitter (FileOutputCommitter.java:commitTask(535)) - Saved output of task \u0027attempt_local2098178962_0001_m_000000_0\u0027 to file:/tmp/hadoop-root/mapred/staging/root187324987/.staging/_distcp-632842515/_logs/_temporary/0/task_local2098178962_0001_m_000000\n2019-01-24 08:57:54,855 INFO  [LocalJobRunner Map Task Executor #0] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/aksci/aksci_p1.0.sdf to swift://mare.cpouta/aksci/aksci_p1.0.sdf [26.0M/26.0M]\n2019-01-24 08:57:54,856 INFO  [LocalJobRunner Map Task Executor #0] mapred.Task (Task.java:sendDone(1184)) - Task \u0027attempt_local2098178962_0001_m_000000_0\u0027 done.\n2019-01-24 08:57:54,859 INFO  [LocalJobRunner Map Task Executor #0] mapred.Task (Task.java:done(1080)) - Final Counters for attempt_local2098178962_0001_m_000000_0: Counters: 28\n\tFile System Counters\n\t\tFILE: Number of bytes read\u003d132184\n\t\tFILE: Number of bytes written\u003d434743\n\t\tFILE: Number of read operations\u003d0\n\t\tFILE: Number of large read operations\u003d0\n\t\tFILE: Number of write operations\u003d0\n\t\tHDFS: Number of bytes read\u003d327925622\n\t\tHDFS: Number of bytes written\u003d0\n\t\tHDFS: Number of read operations\u003d13\n\t\tHDFS: Number of large read operations\u003d0\n\t\tHDFS: Number of write operations\u003d0\n\t\tSWIFT: Number of bytes read\u003d0\n\t\tSWIFT: Number of bytes written\u003d327925622\n\t\tSWIFT: Number of read operations\u003d0\n\t\tSWIFT: Number of large read operations\u003d0\n\t\tSWIFT: Number of write operations\u003d0\n\tMap-Reduce Framework\n\t\tMap input records\u003d3\n\t\tMap output records\u003d0\n\t\tInput split bytes\u003d155\n\t\tSpilled Records\u003d0\n\t\tFailed Shuffles\u003d0\n\t\tMerged Map outputs\u003d0\n\t\tGC time elapsed (ms)\u003d22\n\t\tTotal committed heap usage (bytes)\u003d403701760\n\tFile Input Format Counters \n\t\tBytes Read\u003d546\n\tFile Output Format Counters \n\t\tBytes Written\u003d8\n\tDistCp Counters\n\t\tBytes Copied\u003d327925622\n\t\tBytes Expected\u003d327925622\n\t\tFiles Copied\u003d3\n2019-01-24 08:57:54,860 INFO  [LocalJobRunner Map Task Executor #0] mapred.LocalJobRunner (LocalJobRunner.java:run(249)) - Finishing task: attempt_local2098178962_0001_m_000000_0\n2019-01-24 08:57:54,861 INFO  [Thread-6] mapred.LocalJobRunner (LocalJobRunner.java:runTasks(456)) - map task executor complete.\n2019-01-24 08:57:55,350 INFO  [Thread-6] mapred.CopyCommitter (CopyCommitter.java:cleanup(156)) - Cleaning up temporary work folder: file:/tmp/hadoop-root/mapred/staging/root187324987/.staging/_distcp-632842515\n2019-01-24 08:57:55,744 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1367)) -  map 100% reduce 0%\n2019-01-24 08:57:55,745 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1378)) - Job job_local2098178962_0001 completed successfully\n2019-01-24 08:57:55,752 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1385)) - Counters: 28\n\tFile System Counters\n\t\tFILE: Number of bytes read\u003d132184\n\t\tFILE: Number of bytes written\u003d434743\n\t\tFILE: Number of read operations\u003d0\n\t\tFILE: Number of large read operations\u003d0\n\t\tFILE: Number of write operations\u003d0\n\t\tHDFS: Number of bytes read\u003d327925622\n\t\tHDFS: Number of bytes written\u003d0\n\t\tHDFS: Number of read operations\u003d13\n\t\tHDFS: Number of large read operations\u003d0\n\t\tHDFS: Number of write operations\u003d0\n\t\tSWIFT: Number of bytes read\u003d0\n\t\tSWIFT: Number of bytes written\u003d327925622\n\t\tSWIFT: Number of read operations\u003d0\n\t\tSWIFT: Number of large read operations\u003d0\n\t\tSWIFT: Number of write operations\u003d0\n\tMap-Reduce Framework\n\t\tMap input records\u003d3\n\t\tMap output records\u003d0\n\t\tInput split bytes\u003d155\n\t\tSpilled Records\u003d0\n\t\tFailed Shuffles\u003d0\n\t\tMerged Map outputs\u003d0\n\t\tGC time elapsed (ms)\u003d22\n\t\tTotal committed heap usage (bytes)\u003d403701760\n\tFile Input Format Counters \n\t\tBytes Read\u003d546\n\tFile Output Format Counters \n\t\tBytes Written\u003d8\n\tDistCp Counters\n\t\tBytes Copied\u003d327925622\n\t\tBytes Expected\u003d327925622\n\t\tFiles Copied\u003d3\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1548320201512_2063125047",
+      "id": "20190124-085641_604348528",
+      "dateCreated": "2019-01-24 08:56:41.513",
+      "dateStarted": "2019-01-24 08:57:34.789",
+      "dateFinished": "2019-01-24 08:57:56.086",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sh\n# Persist surechembl in cPouta\nhadoop distcp hdfs://spark-marco-master-000/surechembl swift://mare.cpouta/surechembl",
+      "user": "anonymous",
+      "dateUpdated": "2019-01-24 08:58:09.131",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "2019-01-24 08:58:10,871 INFO  [main] Configuration.deprecation (Configuration.java:warnOnceIfDeprecated(1243)) - topology.node.switch.mapping.impl is deprecated. Instead, use net.topology.node.switch.mapping.impl\n2019-01-24 08:58:12,756 INFO  [main] tools.DistCp (DistCp.java:run(117)) - Input Options: DistCpOptions{atomicCommit\u003dfalse, syncFolder\u003dfalse, deleteMissing\u003dfalse, ignoreFailures\u003dfalse, maxMaps\u003d20, sslConfigurationFile\u003d\u0027null\u0027, copyStrategy\u003d\u0027uniformsize\u0027, sourceFileListing\u003dnull, sourcePaths\u003d[hdfs://spark-marco-master-000/surechembl], targetPath\u003dswift://mare.cpouta/surechembl, targetPathExists\u003dfalse, preserveRawXattrs\u003dfalse}\n2019-01-24 08:58:12,774 INFO  [main] Configuration.deprecation (Configuration.java:warnOnceIfDeprecated(1243)) - session.id is deprecated. Instead, use dfs.metrics.session-id\n2019-01-24 08:58:12,775 INFO  [main] jvm.JvmMetrics (JvmMetrics.java:init(76)) - Initializing JVM Metrics with processName\u003dJobTracker, sessionId\u003d\n2019-01-24 08:58:13,655 INFO  [main] Configuration.deprecation (Configuration.java:warnOnceIfDeprecated(1243)) - io.sort.mb is deprecated. Instead, use mapreduce.task.io.sort.mb\n2019-01-24 08:58:13,656 INFO  [main] Configuration.deprecation (Configuration.java:warnOnceIfDeprecated(1243)) - io.sort.factor is deprecated. Instead, use mapreduce.task.io.sort.factor\n2019-01-24 08:58:13,697 INFO  [main] jvm.JvmMetrics (JvmMetrics.java:init(71)) - Cannot initialize JVM Metrics with processName\u003dJobTracker, sessionId\u003d - already initialized\n2019-01-24 08:58:13,727 INFO  [main] mapreduce.JobSubmitter (JobSubmitter.java:submitJobInternal(198)) - number of splits:1\n2019-01-24 08:58:13,811 INFO  [main] mapreduce.JobSubmitter (JobSubmitter.java:printTokens(287)) - Submitting tokens for job: job_local993056930_0001\n2019-01-24 08:58:13,959 INFO  [main] mapreduce.Job (Job.java:submit(1294)) - The url to track the job: http://localhost:8080/\n2019-01-24 08:58:13,960 INFO  [main] tools.DistCp (DistCp.java:createAndSubmitJob(193)) - DistCp job-id: job_local993056930_0001\n2019-01-24 08:58:13,961 INFO  [Thread-6] mapred.LocalJobRunner (LocalJobRunner.java:createOutputCommitter(471)) - OutputCommitter set in config null\n2019-01-24 08:58:13,962 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1339)) - Running job: job_local993056930_0001\n2019-01-24 08:58:13,968 INFO  [Thread-6] output.FileOutputCommitter (FileOutputCommitter.java:\u003cinit\u003e(108)) - File Output Committer Algorithm version is 1\n2019-01-24 08:58:13,970 INFO  [Thread-6] mapred.LocalJobRunner (LocalJobRunner.java:createOutputCommitter(489)) - OutputCommitter is org.apache.hadoop.tools.mapred.CopyCommitter\n2019-01-24 08:58:14,006 INFO  [Thread-6] mapred.LocalJobRunner (LocalJobRunner.java:runTasks(448)) - Waiting for map tasks\n2019-01-24 08:58:14,007 INFO  [LocalJobRunner Map Task Executor #0] mapred.LocalJobRunner (LocalJobRunner.java:run(224)) - Starting task: attempt_local993056930_0001_m_000000_0\n2019-01-24 08:58:14,032 INFO  [LocalJobRunner Map Task Executor #0] output.FileOutputCommitter (FileOutputCommitter.java:\u003cinit\u003e(108)) - File Output Committer Algorithm version is 1\n2019-01-24 08:58:14,050 INFO  [LocalJobRunner Map Task Executor #0] mapred.Task (Task.java:initialize(614)) -  Using ResourceCalculatorProcessTree : [ ]\n2019-01-24 08:58:14,053 INFO  [LocalJobRunner Map Task Executor #0] mapred.MapTask (MapTask.java:runNewMapper(756)) - Processing split: file:/tmp/hadoop-root/mapred/staging/root1861044652/.staging/_distcp167379555/fileList.seq:0+2919\n2019-01-24 08:58:14,060 INFO  [LocalJobRunner Map Task Executor #0] output.FileOutputCommitter (FileOutputCommitter.java:\u003cinit\u003e(108)) - File Output Committer Algorithm version is 1\n2019-01-24 08:58:14,192 INFO  [LocalJobRunner Map Task Executor #0] mapred.CopyMapper (CopyMapper.java:map(210)) - Copying hdfs://spark-marco-master-000/surechembl to swift://mare.cpouta/surechembl\n2019-01-24 08:58:14,482 INFO  [LocalJobRunner Map Task Executor #0] mapred.CopyMapper (CopyMapper.java:map(210)) - Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.0.sdf to swift://mare.cpouta/surechembl/surechembl_p0.0.sdf\n2019-01-24 08:58:14,708 INFO  [LocalJobRunner Map Task Executor #0] mapred.RetriableFileCopyCommand (RetriableFileCopyCommand.java:getTmpFile(232)) - Creating temp file: swift://mare.cpouta/surechembl/.distcp.tmp.attempt_local993056930_0001_m_000000_0\n2019-01-24 08:58:14,966 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1360)) - Job job_local993056930_0001 running in uber mode : false\n2019-01-24 08:58:14,967 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1367)) -  map 0% reduce 0%\n2019-01-24 08:58:20,053 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 77.2% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.0.sdf to swift://mare.cpouta/surechembl/surechembl_p0.0.sdf [416.7M/539.8M] \u003e map\n2019-01-24 08:58:20,973 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1367)) -  map 10% reduce 0%\n2019-01-24 08:58:23,054 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.0.sdf to swift://mare.cpouta/surechembl/surechembl_p0.0.sdf [539.8M/539.8M] \u003e map\n2019-01-24 08:58:26,056 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.0.sdf to swift://mare.cpouta/surechembl/surechembl_p0.0.sdf [539.8M/539.8M] \u003e map\n2019-01-24 08:58:37,865 INFO  [LocalJobRunner Map Task Executor #0] mapred.CopyMapper (CopyMapper.java:map(210)) - Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.1.sdf to swift://mare.cpouta/surechembl/surechembl_p0.1.sdf\n2019-01-24 08:58:38,083 INFO  [LocalJobRunner Map Task Executor #0] mapred.RetriableFileCopyCommand (RetriableFileCopyCommand.java:getTmpFile(232)) - Creating temp file: swift://mare.cpouta/surechembl/.distcp.tmp.attempt_local993056930_0001_m_000000_0\n2019-01-24 08:58:41,059 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 37.1% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.1.sdf to swift://mare.cpouta/surechembl/surechembl_p0.1.sdf [200.0M/539.7M] \u003e map\n2019-01-24 08:58:41,985 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1367)) -  map 16% reduce 0%\n2019-01-24 08:58:44,061 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 92.6% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.1.sdf to swift://mare.cpouta/surechembl/surechembl_p0.1.sdf [500.0M/539.7M] \u003e map\n2019-01-24 08:58:47,063 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.1.sdf to swift://mare.cpouta/surechembl/surechembl_p0.1.sdf [539.7M/539.7M] \u003e map\n2019-01-24 08:58:50,065 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.1.sdf to swift://mare.cpouta/surechembl/surechembl_p0.1.sdf [539.7M/539.7M] \u003e map\n2019-01-24 08:59:01,048 INFO  [LocalJobRunner Map Task Executor #0] mapred.CopyMapper (CopyMapper.java:map(210)) - Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.10.sdf to swift://mare.cpouta/surechembl/surechembl_p0.10.sdf\n2019-01-24 08:59:01,260 INFO  [LocalJobRunner Map Task Executor #0] mapred.RetriableFileCopyCommand (RetriableFileCopyCommand.java:getTmpFile(232)) - Creating temp file: swift://mare.cpouta/surechembl/.distcp.tmp.attempt_local993056930_0001_m_000000_0\n2019-01-24 08:59:05,067 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 55.6% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.10.sdf to swift://mare.cpouta/surechembl/surechembl_p0.10.sdf [300.0M/539.8M] \u003e map\n2019-01-24 08:59:05,998 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1367)) -  map 22% reduce 0%\n2019-01-24 08:59:08,068 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.10.sdf to swift://mare.cpouta/surechembl/surechembl_p0.10.sdf [539.8M/539.8M] \u003e map\n2019-01-24 08:59:11,069 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.10.sdf to swift://mare.cpouta/surechembl/surechembl_p0.10.sdf [539.8M/539.8M] \u003e map\n2019-01-24 08:59:24,259 INFO  [LocalJobRunner Map Task Executor #0] mapred.CopyMapper (CopyMapper.java:map(210)) - Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.11.sdf to swift://mare.cpouta/surechembl/surechembl_p0.11.sdf\n2019-01-24 08:59:24,462 INFO  [LocalJobRunner Map Task Executor #0] mapred.RetriableFileCopyCommand (RetriableFileCopyCommand.java:getTmpFile(232)) - Creating temp file: swift://mare.cpouta/surechembl/.distcp.tmp.attempt_local993056930_0001_m_000000_0\n2019-01-24 08:59:29,071 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 74.1% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.11.sdf to swift://mare.cpouta/surechembl/surechembl_p0.11.sdf [400.0M/539.8M] \u003e map\n2019-01-24 08:59:30,021 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1367)) -  map 28% reduce 0%\n2019-01-24 08:59:32,072 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.11.sdf to swift://mare.cpouta/surechembl/surechembl_p0.11.sdf [539.8M/539.8M] \u003e map\n2019-01-24 08:59:35,074 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.11.sdf to swift://mare.cpouta/surechembl/surechembl_p0.11.sdf [539.8M/539.8M] \u003e map\n2019-01-24 08:59:47,298 INFO  [LocalJobRunner Map Task Executor #0] mapred.CopyMapper (CopyMapper.java:map(210)) - Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.12.sdf to swift://mare.cpouta/surechembl/surechembl_p0.12.sdf\n2019-01-24 08:59:47,538 INFO  [LocalJobRunner Map Task Executor #0] mapred.RetriableFileCopyCommand (RetriableFileCopyCommand.java:getTmpFile(232)) - Creating temp file: swift://mare.cpouta/surechembl/.distcp.tmp.attempt_local993056930_0001_m_000000_0\n2019-01-24 08:59:53,076 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 92.6% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.12.sdf to swift://mare.cpouta/surechembl/surechembl_p0.12.sdf [500.0M/539.8M] \u003e map\n2019-01-24 08:59:54,032 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1367)) -  map 34% reduce 0%\n2019-01-24 08:59:56,077 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.12.sdf to swift://mare.cpouta/surechembl/surechembl_p0.12.sdf [539.8M/539.8M] \u003e map\n2019-01-24 08:59:59,078 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.12.sdf to swift://mare.cpouta/surechembl/surechembl_p0.12.sdf [539.8M/539.8M] \u003e map\n2019-01-24 09:00:10,624 INFO  [LocalJobRunner Map Task Executor #0] mapred.CopyMapper (CopyMapper.java:map(210)) - Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.13.sdf to swift://mare.cpouta/surechembl/surechembl_p0.13.sdf\n2019-01-24 09:00:10,823 INFO  [LocalJobRunner Map Task Executor #0] mapred.RetriableFileCopyCommand (RetriableFileCopyCommand.java:getTmpFile(232)) - Creating temp file: swift://mare.cpouta/surechembl/.distcp.tmp.attempt_local993056930_0001_m_000000_0\n2019-01-24 09:00:12,229 INFO  [LocalJobRunner Map Task Executor #0] mapred.CopyMapper (CopyMapper.java:map(210)) - Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.2.sdf to swift://mare.cpouta/surechembl/surechembl_p0.2.sdf\n2019-01-24 09:00:12,441 INFO  [LocalJobRunner Map Task Executor #0] mapred.RetriableFileCopyCommand (RetriableFileCopyCommand.java:getTmpFile(232)) - Creating temp file: swift://mare.cpouta/surechembl/.distcp.tmp.attempt_local993056930_0001_m_000000_0\n2019-01-24 09:00:14,080 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 18.5% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.2.sdf to swift://mare.cpouta/surechembl/surechembl_p0.2.sdf [100.0M/539.7M] \u003e map\n2019-01-24 09:00:15,042 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1367)) -  map 46% reduce 0%\n2019-01-24 09:00:17,081 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 74.1% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.2.sdf to swift://mare.cpouta/surechembl/surechembl_p0.2.sdf [400.0M/539.7M] \u003e map\n2019-01-24 09:00:20,082 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.2.sdf to swift://mare.cpouta/surechembl/surechembl_p0.2.sdf [539.7M/539.7M] \u003e map\n2019-01-24 09:00:23,084 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.2.sdf to swift://mare.cpouta/surechembl/surechembl_p0.2.sdf [539.7M/539.7M] \u003e map\n2019-01-24 09:00:36,003 INFO  [LocalJobRunner Map Task Executor #0] mapred.CopyMapper (CopyMapper.java:map(210)) - Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.3.sdf to swift://mare.cpouta/surechembl/surechembl_p0.3.sdf\n2019-01-24 09:00:36,206 INFO  [LocalJobRunner Map Task Executor #0] mapred.RetriableFileCopyCommand (RetriableFileCopyCommand.java:getTmpFile(232)) - Creating temp file: swift://mare.cpouta/surechembl/.distcp.tmp.attempt_local993056930_0001_m_000000_0\n2019-01-24 09:00:41,085 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 74.1% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.3.sdf to swift://mare.cpouta/surechembl/surechembl_p0.3.sdf [400.0M/539.7M] \u003e map\n2019-01-24 09:00:42,060 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1367)) -  map 52% reduce 0%\n2019-01-24 09:00:44,086 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.3.sdf to swift://mare.cpouta/surechembl/surechembl_p0.3.sdf [539.7M/539.7M] \u003e map\n2019-01-24 09:00:47,088 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.3.sdf to swift://mare.cpouta/surechembl/surechembl_p0.3.sdf [539.7M/539.7M] \u003e map\n2019-01-24 09:00:59,263 INFO  [LocalJobRunner Map Task Executor #0] mapred.CopyMapper (CopyMapper.java:map(210)) - Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.4.sdf to swift://mare.cpouta/surechembl/surechembl_p0.4.sdf\n2019-01-24 09:00:59,476 INFO  [LocalJobRunner Map Task Executor #0] mapred.RetriableFileCopyCommand (RetriableFileCopyCommand.java:getTmpFile(232)) - Creating temp file: swift://mare.cpouta/surechembl/.distcp.tmp.attempt_local993056930_0001_m_000000_0\n2019-01-24 09:01:05,089 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 92.7% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.4.sdf to swift://mare.cpouta/surechembl/surechembl_p0.4.sdf [500.0M/539.7M] \u003e map\n2019-01-24 09:01:06,071 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1367)) -  map 58% reduce 0%\n2019-01-24 09:01:08,090 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.4.sdf to swift://mare.cpouta/surechembl/surechembl_p0.4.sdf [539.7M/539.7M] \u003e map\n2019-01-24 09:01:11,092 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.4.sdf to swift://mare.cpouta/surechembl/surechembl_p0.4.sdf [539.7M/539.7M] \u003e map\n2019-01-24 09:01:22,254 INFO  [LocalJobRunner Map Task Executor #0] mapred.CopyMapper (CopyMapper.java:map(210)) - Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.5.sdf to swift://mare.cpouta/surechembl/surechembl_p0.5.sdf\n2019-01-24 09:01:22,463 INFO  [LocalJobRunner Map Task Executor #0] mapred.RetriableFileCopyCommand (RetriableFileCopyCommand.java:getTmpFile(232)) - Creating temp file: swift://mare.cpouta/surechembl/.distcp.tmp.attempt_local993056930_0001_m_000000_0\n2019-01-24 09:01:26,093 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 55.6% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.5.sdf to swift://mare.cpouta/surechembl/surechembl_p0.5.sdf [300.0M/539.7M] \u003e map\n2019-01-24 09:01:27,079 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1367)) -  map 64% reduce 0%\n2019-01-24 09:01:29,094 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.5.sdf to swift://mare.cpouta/surechembl/surechembl_p0.5.sdf [539.7M/539.7M] \u003e map\n2019-01-24 09:01:32,095 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.5.sdf to swift://mare.cpouta/surechembl/surechembl_p0.5.sdf [539.7M/539.7M] \u003e map\n2019-01-24 09:01:45,632 INFO  [LocalJobRunner Map Task Executor #0] mapred.CopyMapper (CopyMapper.java:map(210)) - Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.6.sdf to swift://mare.cpouta/surechembl/surechembl_p0.6.sdf\n2019-01-24 09:01:45,834 INFO  [LocalJobRunner Map Task Executor #0] mapred.RetriableFileCopyCommand (RetriableFileCopyCommand.java:getTmpFile(232)) - Creating temp file: swift://mare.cpouta/surechembl/.distcp.tmp.attempt_local993056930_0001_m_000000_0\n2019-01-24 09:01:50,097 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 63.5% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.6.sdf to swift://mare.cpouta/surechembl/surechembl_p0.6.sdf [342.8M/539.7M] \u003e map\n2019-01-24 09:01:51,088 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1367)) -  map 70% reduce 0%\n2019-01-24 09:01:53,098 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.6.sdf to swift://mare.cpouta/surechembl/surechembl_p0.6.sdf [539.7M/539.7M] \u003e map\n2019-01-24 09:01:56,099 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.6.sdf to swift://mare.cpouta/surechembl/surechembl_p0.6.sdf [539.7M/539.7M] \u003e map\n2019-01-24 09:02:08,900 INFO  [LocalJobRunner Map Task Executor #0] mapred.CopyMapper (CopyMapper.java:map(210)) - Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.7.sdf to swift://mare.cpouta/surechembl/surechembl_p0.7.sdf\n2019-01-24 09:02:09,126 INFO  [LocalJobRunner Map Task Executor #0] mapred.RetriableFileCopyCommand (RetriableFileCopyCommand.java:getTmpFile(232)) - Creating temp file: swift://mare.cpouta/surechembl/.distcp.tmp.attempt_local993056930_0001_m_000000_0\n2019-01-24 09:02:14,101 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 74.1% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.7.sdf to swift://mare.cpouta/surechembl/surechembl_p0.7.sdf [400.0M/539.7M] \u003e map\n2019-01-24 09:02:14,103 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1367)) -  map 76% reduce 0%\n2019-01-24 09:02:17,102 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.7.sdf to swift://mare.cpouta/surechembl/surechembl_p0.7.sdf [539.7M/539.7M] \u003e map\n2019-01-24 09:02:20,103 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.7.sdf to swift://mare.cpouta/surechembl/surechembl_p0.7.sdf [539.7M/539.7M] \u003e map\n2019-01-24 09:02:32,858 INFO  [LocalJobRunner Map Task Executor #0] mapred.CopyMapper (CopyMapper.java:map(210)) - Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.8.sdf to swift://mare.cpouta/surechembl/surechembl_p0.8.sdf\n2019-01-24 09:02:33,052 INFO  [LocalJobRunner Map Task Executor #0] mapred.RetriableFileCopyCommand (RetriableFileCopyCommand.java:getTmpFile(232)) - Creating temp file: swift://mare.cpouta/surechembl/.distcp.tmp.attempt_local993056930_0001_m_000000_0\n2019-01-24 09:02:38,105 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 74.1% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.8.sdf to swift://mare.cpouta/surechembl/surechembl_p0.8.sdf [400.0M/539.7M] \u003e map\n2019-01-24 09:02:38,113 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1367)) -  map 82% reduce 0%\n2019-01-24 09:02:41,107 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.8.sdf to swift://mare.cpouta/surechembl/surechembl_p0.8.sdf [539.7M/539.7M] \u003e map\n2019-01-24 09:02:44,108 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.8.sdf to swift://mare.cpouta/surechembl/surechembl_p0.8.sdf [539.7M/539.7M] \u003e map\n2019-01-24 09:02:56,775 INFO  [LocalJobRunner Map Task Executor #0] mapred.CopyMapper (CopyMapper.java:map(210)) - Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.9.sdf to swift://mare.cpouta/surechembl/surechembl_p0.9.sdf\n2019-01-24 09:02:56,985 INFO  [LocalJobRunner Map Task Executor #0] mapred.RetriableFileCopyCommand (RetriableFileCopyCommand.java:getTmpFile(232)) - Creating temp file: swift://mare.cpouta/surechembl/.distcp.tmp.attempt_local993056930_0001_m_000000_0\n2019-01-24 09:03:02,110 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 74.1% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.9.sdf to swift://mare.cpouta/surechembl/surechembl_p0.9.sdf [400.0M/539.7M] \u003e map\n2019-01-24 09:03:02,122 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1367)) -  map 88% reduce 0%\n2019-01-24 09:03:05,111 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.9.sdf to swift://mare.cpouta/surechembl/surechembl_p0.9.sdf [539.7M/539.7M] \u003e map\n2019-01-24 09:03:08,111 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p0.9.sdf to swift://mare.cpouta/surechembl/surechembl_p0.9.sdf [539.7M/539.7M] \u003e map\n2019-01-24 09:03:20,147 INFO  [LocalJobRunner Map Task Executor #0] mapred.CopyMapper (CopyMapper.java:map(210)) - Copying hdfs://spark-marco-master-000/surechembl/surechembl_p1.0.sdf to swift://mare.cpouta/surechembl/surechembl_p1.0.sdf\n2019-01-24 09:03:20,348 INFO  [LocalJobRunner Map Task Executor #0] mapred.RetriableFileCopyCommand (RetriableFileCopyCommand.java:getTmpFile(232)) - Creating temp file: swift://mare.cpouta/surechembl/.distcp.tmp.attempt_local993056930_0001_m_000000_0\n2019-01-24 09:03:26,113 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 92.3% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p1.0.sdf to swift://mare.cpouta/surechembl/surechembl_p1.0.sdf [500.0M/541.6M] \u003e map\n2019-01-24 09:03:26,130 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1367)) -  map 94% reduce 0%\n2019-01-24 09:03:29,115 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p1.0.sdf to swift://mare.cpouta/surechembl/surechembl_p1.0.sdf [541.6M/541.6M] \u003e map\n2019-01-24 09:03:32,116 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p1.0.sdf to swift://mare.cpouta/surechembl/surechembl_p1.0.sdf [541.6M/541.6M] \u003e map\n2019-01-24 09:03:43,848 INFO  [LocalJobRunner Map Task Executor #0] mapred.CopyMapper (CopyMapper.java:map(210)) - Copying hdfs://spark-marco-master-000/surechembl/surechembl_p1.1.sdf to swift://mare.cpouta/surechembl/surechembl_p1.1.sdf\n2019-01-24 09:03:44,048 INFO  [LocalJobRunner Map Task Executor #0] mapred.RetriableFileCopyCommand (RetriableFileCopyCommand.java:getTmpFile(232)) - Creating temp file: swift://mare.cpouta/surechembl/.distcp.tmp.attempt_local993056930_0001_m_000000_0\n2019-01-24 09:03:47,118 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 39.2% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p1.1.sdf to swift://mare.cpouta/surechembl/surechembl_p1.1.sdf [200.0M/510.8M] \u003e map\n2019-01-24 09:03:47,138 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1367)) -  map 100% reduce 0%\n2019-01-24 09:03:50,119 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 97.9% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p1.1.sdf to swift://mare.cpouta/surechembl/surechembl_p1.1.sdf [500.0M/510.8M] \u003e map\n2019-01-24 09:03:53,120 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p1.1.sdf to swift://mare.cpouta/surechembl/surechembl_p1.1.sdf [510.8M/510.8M] \u003e map\n2019-01-24 09:03:56,121 INFO  [communication thread] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p1.1.sdf to swift://mare.cpouta/surechembl/surechembl_p1.1.sdf [510.8M/510.8M] \u003e map\n2019-01-24 09:04:06,380 INFO  [LocalJobRunner Map Task Executor #0] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p1.1.sdf to swift://mare.cpouta/surechembl/surechembl_p1.1.sdf [510.8M/510.8M] \u003e map\n2019-01-24 09:04:06,381 INFO  [LocalJobRunner Map Task Executor #0] mapred.Task (Task.java:done(1046)) - Task:attempt_local993056930_0001_m_000000_0 is done. And is in the process of committing\n2019-01-24 09:04:06,382 INFO  [LocalJobRunner Map Task Executor #0] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p1.1.sdf to swift://mare.cpouta/surechembl/surechembl_p1.1.sdf [510.8M/510.8M] \u003e map\n2019-01-24 09:04:06,382 INFO  [LocalJobRunner Map Task Executor #0] mapred.Task (Task.java:commit(1225)) - Task attempt_local993056930_0001_m_000000_0 is allowed to commit now\n2019-01-24 09:04:06,383 INFO  [LocalJobRunner Map Task Executor #0] output.FileOutputCommitter (FileOutputCommitter.java:commitTask(535)) - Saved output of task \u0027attempt_local993056930_0001_m_000000_0\u0027 to file:/tmp/hadoop-root/mapred/staging/root1861044652/.staging/_distcp167379555/_logs/_temporary/0/task_local993056930_0001_m_000000\n2019-01-24 09:04:06,384 INFO  [LocalJobRunner Map Task Executor #0] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/surechembl/surechembl_p1.1.sdf to swift://mare.cpouta/surechembl/surechembl_p1.1.sdf [510.8M/510.8M]\n2019-01-24 09:04:06,384 INFO  [LocalJobRunner Map Task Executor #0] mapred.Task (Task.java:sendDone(1184)) - Task \u0027attempt_local993056930_0001_m_000000_0\u0027 done.\n2019-01-24 09:04:06,392 INFO  [LocalJobRunner Map Task Executor #0] mapred.Task (Task.java:done(1080)) - Final Counters for attempt_local993056930_0001_m_000000_0: Counters: 28\n\tFile System Counters\n\t\tFILE: Number of bytes read\u003d146222\n\t\tFILE: Number of bytes written\u003d439890\n\t\tFILE: Number of read operations\u003d0\n\t\tFILE: Number of large read operations\u003d0\n\t\tFILE: Number of write operations\u003d0\n\t\tHDFS: Number of bytes read\u003d8479022705\n\t\tHDFS: Number of bytes written\u003d0\n\t\tHDFS: Number of read operations\u003d69\n\t\tHDFS: Number of large read operations\u003d0\n\t\tHDFS: Number of write operations\u003d0\n\t\tSWIFT: Number of bytes read\u003d0\n\t\tSWIFT: Number of bytes written\u003d8479022705\n\t\tSWIFT: Number of read operations\u003d0\n\t\tSWIFT: Number of large read operations\u003d0\n\t\tSWIFT: Number of write operations\u003d0\n\tMap-Reduce Framework\n\t\tMap input records\u003d17\n\t\tMap output records\u003d0\n\t\tInput split bytes\u003d155\n\t\tSpilled Records\u003d0\n\t\tFailed Shuffles\u003d0\n\t\tMerged Map outputs\u003d0\n\t\tGC time elapsed (ms)\u003d511\n\t\tTotal committed heap usage (bytes)\u003d225443840\n\tFile Input Format Counters \n\t\tBytes Read\u003d2971\n\tFile Output Format Counters \n\t\tBytes Written\u003d8\n\tDistCp Counters\n\t\tBytes Copied\u003d8479022705\n\t\tBytes Expected\u003d8479022705\n\t\tFiles Copied\u003d17\n2019-01-24 09:04:06,392 INFO  [LocalJobRunner Map Task Executor #0] mapred.LocalJobRunner (LocalJobRunner.java:run(249)) - Finishing task: attempt_local993056930_0001_m_000000_0\n2019-01-24 09:04:06,393 INFO  [Thread-6] mapred.LocalJobRunner (LocalJobRunner.java:runTasks(456)) - map task executor complete.\n2019-01-24 09:04:07,334 INFO  [Thread-6] mapred.CopyCommitter (CopyCommitter.java:cleanup(156)) - Cleaning up temporary work folder: file:/tmp/hadoop-root/mapred/staging/root1861044652/.staging/_distcp167379555\n2019-01-24 09:04:08,151 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1378)) - Job job_local993056930_0001 completed successfully\n2019-01-24 09:04:08,158 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1385)) - Counters: 28\n\tFile System Counters\n\t\tFILE: Number of bytes read\u003d146222\n\t\tFILE: Number of bytes written\u003d439890\n\t\tFILE: Number of read operations\u003d0\n\t\tFILE: Number of large read operations\u003d0\n\t\tFILE: Number of write operations\u003d0\n\t\tHDFS: Number of bytes read\u003d8479022705\n\t\tHDFS: Number of bytes written\u003d0\n\t\tHDFS: Number of read operations\u003d69\n\t\tHDFS: Number of large read operations\u003d0\n\t\tHDFS: Number of write operations\u003d0\n\t\tSWIFT: Number of bytes read\u003d0\n\t\tSWIFT: Number of bytes written\u003d8479022705\n\t\tSWIFT: Number of read operations\u003d0\n\t\tSWIFT: Number of large read operations\u003d0\n\t\tSWIFT: Number of write operations\u003d0\n\tMap-Reduce Framework\n\t\tMap input records\u003d17\n\t\tMap output records\u003d0\n\t\tInput split bytes\u003d155\n\t\tSpilled Records\u003d0\n\t\tFailed Shuffles\u003d0\n\t\tMerged Map outputs\u003d0\n\t\tGC time elapsed (ms)\u003d511\n\t\tTotal committed heap usage (bytes)\u003d225443840\n\tFile Input Format Counters \n\t\tBytes Read\u003d2971\n\tFile Output Format Counters \n\t\tBytes Written\u003d8\n\tDistCp Counters\n\t\tBytes Copied\u003d8479022705\n\t\tBytes Expected\u003d8479022705\n\t\tFiles Copied\u003d17\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1548320248143_-1913655603",
+      "id": "20190124-085728_917797923",
+      "dateCreated": "2019-01-24 08:57:28.143",
+      "dateStarted": "2019-01-24 08:58:09.786",
+      "dateFinished": "2019-01-24 09:04:08.617",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n### Init scripts",
+      "user": "anonymous",
+      "dateUpdated": "2019-01-21 15:13:38.749",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eInit scripts\u003c/h3\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1548083585360_1127599701",
+      "id": "20190121-151305_870399779",
+      "dateCreated": "2019-01-21 15:13:05.360",
+      "dateStarted": "2019-01-21 15:13:38.751",
+      "dateFinished": "2019-01-21 15:13:38.766",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark.dep\nz.reset\nz.addRepo(\"sonatype\").url(\"https://oss.sonatype.org/content/repositories/snapshots/\").snapshot\nz.load(\"se.uu.it:mare:0.4.0-SNAPSHOT\")",
+      "user": "anonymous",
+      "dateUpdated": "2019-01-26 09:25:11.224",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "res0: org.apache.zeppelin.dep.Dependency \u003d org.apache.zeppelin.dep.Dependency@6d0d6423\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1548083641116_963990285",
+      "id": "20190121-151401_1517078195",
+      "dateCreated": "2019-01-21 15:14:01.116",
+      "dateStarted": "2019-01-26 09:25:12.062",
+      "dateFinished": "2019-01-26 09:25:29.458",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\n// Check version\nsc.version",
+      "user": "anonymous",
+      "dateUpdated": "2019-01-26 09:25:42.135",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "res5: String \u003d 2.3.2\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1548146020827_-1576341996",
+      "id": "20190122-083340_968041672",
+      "dateCreated": "2019-01-22 08:33:40.827",
+      "dateStarted": "2019-01-26 09:25:42.947",
+      "dateFinished": "2019-01-26 09:25:49.813",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\n// Dummy MaRe pipeline to pull containers\nimport se.uu.it.mare._\nval rdd \u003d sc.parallelize(1 to 128).map(_.toString)\nnew MaRe(rdd).map(\n    inputMountPoint \u003d TextFile(\"/in\"),\n    outputMountPoint \u003d TextFile(\"/out\"),\n    imageName \u003d \"mcapuccini/oe:latest\",\n    command \u003d \"cat /in \u003e /out\").map(\n    inputMountPoint \u003d TextFile(\"/in\"),\n    outputMountPoint \u003d TextFile(\"/out\"),\n    imageName \u003d \"mcapuccini/sdsorter:latest\",\n    command \u003d \"cat /in \u003e /out\").rdd.collect()",
+      "user": "anonymous",
+      "dateUpdated": "2019-01-26 09:26:29.029",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import se.uu.it.mare._\nrdd: org.apache.spark.rdd.RDD[String] \u003d MapPartitionsRDD[1] at map at \u003cconsole\u003e:28\nres8: Array[String] \u003d Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128)\n"
+          }
+        ]
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "http://spark-marco-master-000:4040/jobs/job?id\u003d0"
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "apps": [],
+      "jobName": "paragraph_1548083583339_-757640257",
+      "id": "20190121-151303_1663926185",
+      "dateCreated": "2019-01-21 15:13:03.339",
+      "dateStarted": "2019-01-26 09:26:29.837",
+      "dateFinished": "2019-01-26 09:28:51.796",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n### SureChEMBL HDFS (full data)",
+      "user": "anonymous",
+      "dateUpdated": "2019-01-24 09:06:29.159",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eSureChEMBL HDFS (full data)\u003c/h3\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1548083402284_635928661",
+      "id": "20190121-151002_886705466",
+      "dateCreated": "2019-01-21 15:10:02.284",
+      "dateStarted": "2019-01-24 09:06:29.161",
+      "dateFinished": "2019-01-24 09:06:29.172",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\nimport se.uu.it.mare._\nval recordDelimiter \u003d \"\\n$$$$\\n\"\nsc.hadoopConfiguration.set(\"textinputformat.record.delimiter\", recordDelimiter)\nval rdd \u003d sc.textFile(\"hdfs://spark-marco-master-000/surechembl\")\nnew MaRe(rdd).map(\n    inputMountPoint \u003d TextFile(\"/input.sdf\", recordDelimiter),\n    outputMountPoint \u003d TextFile(\"/output.sdf\", recordDelimiter),\n    imageName \u003d \"mcapuccini/oe:latest\",\n    command \u003d \"fred -receptor /var/openeye/hiv1_protease.oeb \" +\n        \"-hitlist_size 0 \" +\n        \"-conftest none \" +\n        \"-dbase /input.sdf \" +\n        \"-docked_molecule_file /output.sdf\"\n).reduce(\n    inputMountPoint \u003d TextFile(\"/input.sdf\", recordDelimiter),\n    outputMountPoint \u003d TextFile(\"/output.sdf\", recordDelimiter),\n    imageName \u003d \"mcapuccini/sdsorter:latest\",\n    command \u003d \"sdsorter -reversesort\u003d\u0027FRED Chemgauss4 score\u0027 \" +\n        \"-keep-tag\u003d\u0027FRED Chemgauss4 score\u0027 \" +\n        \"-nbest\u003d30 \" +\n        \"/input.sdf \" +\n        \"/output.sdf\"\n).rdd.map(_+\"\\n$$$$\").saveAsTextFile(\"hdfs://spark-marco-master-000/surechembl_top30\")\n// Took 3 hrs 18 min 9 sec",
+      "user": "anonymous",
+      "dateUpdated": "2019-01-24 16:23:12.315",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import se.uu.it.mare._\nrecordDelimiter: String \u003d\n\"\n$$$$\n\"\nrdd: org.apache.spark.rdd.RDD[String] \u003d hdfs://spark-marco-master-000/surechembl MapPartitionsRDD[181] at textFile at \u003cconsole\u003e:79\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1548079565195_99628207",
+      "id": "20190121-140605_2014368695",
+      "dateCreated": "2019-01-21 14:06:05.195",
+      "dateStarted": "2019-01-24 13:03:52.341",
+      "dateFinished": "2019-01-24 16:22:01.592",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sh\n# Persist results in cPouta\nhadoop distcp hdfs://spark-marco-master-000/surechembl_top30 swift://mare.cpouta/surechembl_top30_16nodes",
+      "user": "anonymous",
+      "dateUpdated": "2019-01-24 10:42:33.166",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "tableHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "2019-01-24 08:30:23,330 INFO  [main] Configuration.deprecation (Configuration.java:warnOnceIfDeprecated(1243)) - topology.node.switch.mapping.impl is deprecated. Instead, use net.topology.node.switch.mapping.impl\n2019-01-24 08:30:24,551 INFO  [main] tools.DistCp (DistCp.java:run(117)) - Input Options: DistCpOptions{atomicCommit\u003dfalse, syncFolder\u003dfalse, deleteMissing\u003dfalse, ignoreFailures\u003dfalse, maxMaps\u003d20, sslConfigurationFile\u003d\u0027null\u0027, copyStrategy\u003d\u0027uniformsize\u0027, sourceFileListing\u003dnull, sourcePaths\u003d[hdfs://spark-marco-master-000/surechembl_top30], targetPath\u003dswift://mare.cpouta/surechembl_top30_16nodes, targetPathExists\u003dfalse, preserveRawXattrs\u003dfalse}\n2019-01-24 08:30:24,567 INFO  [main] Configuration.deprecation (Configuration.java:warnOnceIfDeprecated(1243)) - session.id is deprecated. Instead, use dfs.metrics.session-id\n2019-01-24 08:30:24,568 INFO  [main] jvm.JvmMetrics (JvmMetrics.java:init(76)) - Initializing JVM Metrics with processName\u003dJobTracker, sessionId\u003d\n2019-01-24 08:30:25,432 INFO  [main] Configuration.deprecation (Configuration.java:warnOnceIfDeprecated(1243)) - io.sort.mb is deprecated. Instead, use mapreduce.task.io.sort.mb\n2019-01-24 08:30:25,432 INFO  [main] Configuration.deprecation (Configuration.java:warnOnceIfDeprecated(1243)) - io.sort.factor is deprecated. Instead, use mapreduce.task.io.sort.factor\n2019-01-24 08:30:25,474 INFO  [main] jvm.JvmMetrics (JvmMetrics.java:init(71)) - Cannot initialize JVM Metrics with processName\u003dJobTracker, sessionId\u003d - already initialized\n2019-01-24 08:30:25,511 INFO  [main] mapreduce.JobSubmitter (JobSubmitter.java:submitJobInternal(198)) - number of splits:1\n2019-01-24 08:30:25,597 INFO  [main] mapreduce.JobSubmitter (JobSubmitter.java:printTokens(287)) - Submitting tokens for job: job_local874530756_0001\n2019-01-24 08:30:25,734 INFO  [main] mapreduce.Job (Job.java:submit(1294)) - The url to track the job: http://localhost:8080/\n2019-01-24 08:30:25,735 INFO  [main] tools.DistCp (DistCp.java:createAndSubmitJob(193)) - DistCp job-id: job_local874530756_0001\n2019-01-24 08:30:25,736 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1339)) - Running job: job_local874530756_0001\n2019-01-24 08:30:25,736 INFO  [Thread-6] mapred.LocalJobRunner (LocalJobRunner.java:createOutputCommitter(471)) - OutputCommitter set in config null\n2019-01-24 08:30:25,742 INFO  [Thread-6] output.FileOutputCommitter (FileOutputCommitter.java:\u003cinit\u003e(108)) - File Output Committer Algorithm version is 1\n2019-01-24 08:30:25,744 INFO  [Thread-6] mapred.LocalJobRunner (LocalJobRunner.java:createOutputCommitter(489)) - OutputCommitter is org.apache.hadoop.tools.mapred.CopyCommitter\n2019-01-24 08:30:25,782 INFO  [Thread-6] mapred.LocalJobRunner (LocalJobRunner.java:runTasks(448)) - Waiting for map tasks\n2019-01-24 08:30:25,783 INFO  [LocalJobRunner Map Task Executor #0] mapred.LocalJobRunner (LocalJobRunner.java:run(224)) - Starting task: attempt_local874530756_0001_m_000000_0\n2019-01-24 08:30:25,811 INFO  [LocalJobRunner Map Task Executor #0] output.FileOutputCommitter (FileOutputCommitter.java:\u003cinit\u003e(108)) - File Output Committer Algorithm version is 1\n2019-01-24 08:30:25,828 INFO  [LocalJobRunner Map Task Executor #0] mapred.Task (Task.java:initialize(614)) -  Using ResourceCalculatorProcessTree : [ ]\n2019-01-24 08:30:25,831 INFO  [LocalJobRunner Map Task Executor #0] mapred.MapTask (MapTask.java:runNewMapper(756)) - Processing split: file:/tmp/hadoop-root/mapred/staging/root868646216/.staging/_distcp367898809/fileList.seq:0+523\n2019-01-24 08:30:25,840 INFO  [LocalJobRunner Map Task Executor #0] output.FileOutputCommitter (FileOutputCommitter.java:\u003cinit\u003e(108)) - File Output Committer Algorithm version is 1\n2019-01-24 08:30:25,960 INFO  [LocalJobRunner Map Task Executor #0] mapred.CopyMapper (CopyMapper.java:map(210)) - Copying hdfs://spark-marco-master-000/surechembl_top30 to swift://mare.cpouta/surechembl_top30_16nodes\n2019-01-24 08:30:26,233 INFO  [LocalJobRunner Map Task Executor #0] mapred.CopyMapper (CopyMapper.java:map(210)) - Copying hdfs://spark-marco-master-000/surechembl_top30/_SUCCESS to swift://mare.cpouta/surechembl_top30_16nodes/_SUCCESS\n2019-01-24 08:30:26,449 INFO  [LocalJobRunner Map Task Executor #0] mapred.RetriableFileCopyCommand (RetriableFileCopyCommand.java:getTmpFile(232)) - Creating temp file: swift://mare.cpouta/surechembl_top30_16nodes/.distcp.tmp.attempt_local874530756_0001_m_000000_0\n2019-01-24 08:30:26,738 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1360)) - Job job_local874530756_0001 running in uber mode : false\n2019-01-24 08:30:26,740 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1367)) -  map 0% reduce 0%\n2019-01-24 08:30:27,161 INFO  [LocalJobRunner Map Task Executor #0] mapred.CopyMapper (CopyMapper.java:map(210)) - Copying hdfs://spark-marco-master-000/surechembl_top30/part-00000 to swift://mare.cpouta/surechembl_top30_16nodes/part-00000\n2019-01-24 08:30:27,350 INFO  [LocalJobRunner Map Task Executor #0] mapred.RetriableFileCopyCommand (RetriableFileCopyCommand.java:getTmpFile(232)) - Creating temp file: swift://mare.cpouta/surechembl_top30_16nodes/.distcp.tmp.attempt_local874530756_0001_m_000000_0\n2019-01-24 08:30:28,231 INFO  [LocalJobRunner Map Task Executor #0] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - \n2019-01-24 08:30:28,232 INFO  [LocalJobRunner Map Task Executor #0] mapred.Task (Task.java:done(1046)) - Task:attempt_local874530756_0001_m_000000_0 is done. And is in the process of committing\n2019-01-24 08:30:28,240 INFO  [LocalJobRunner Map Task Executor #0] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - \n2019-01-24 08:30:28,241 INFO  [LocalJobRunner Map Task Executor #0] mapred.Task (Task.java:commit(1225)) - Task attempt_local874530756_0001_m_000000_0 is allowed to commit now\n2019-01-24 08:30:28,242 INFO  [LocalJobRunner Map Task Executor #0] output.FileOutputCommitter (FileOutputCommitter.java:commitTask(535)) - Saved output of task \u0027attempt_local874530756_0001_m_000000_0\u0027 to file:/tmp/hadoop-root/mapred/staging/root868646216/.staging/_distcp367898809/_logs/_temporary/0/task_local874530756_0001_m_000000\n2019-01-24 08:30:28,244 INFO  [LocalJobRunner Map Task Executor #0] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/surechembl_top30/part-00000 to swift://mare.cpouta/surechembl_top30_16nodes/part-00000 [221.4K/221.4K]\n2019-01-24 08:30:28,244 INFO  [LocalJobRunner Map Task Executor #0] mapred.Task (Task.java:sendDone(1184)) - Task \u0027attempt_local874530756_0001_m_000000_0\u0027 done.\n2019-01-24 08:30:28,248 INFO  [LocalJobRunner Map Task Executor #0] mapred.Task (Task.java:done(1080)) - Final Counters for attempt_local874530756_0001_m_000000_0: Counters: 28\n\tFile System Counters\n\t\tFILE: Number of bytes read\u003d132261\n\t\tFILE: Number of bytes written\u003d433205\n\t\tFILE: Number of read operations\u003d0\n\t\tFILE: Number of large read operations\u003d0\n\t\tFILE: Number of write operations\u003d0\n\t\tHDFS: Number of bytes read\u003d226763\n\t\tHDFS: Number of bytes written\u003d0\n\t\tHDFS: Number of read operations\u003d12\n\t\tHDFS: Number of large read operations\u003d0\n\t\tHDFS: Number of write operations\u003d0\n\t\tSWIFT: Number of bytes read\u003d0\n\t\tSWIFT: Number of bytes written\u003d226763\n\t\tSWIFT: Number of read operations\u003d0\n\t\tSWIFT: Number of large read operations\u003d0\n\t\tSWIFT: Number of write operations\u003d0\n\tMap-Reduce Framework\n\t\tMap input records\u003d3\n\t\tMap output records\u003d0\n\t\tInput split bytes\u003d154\n\t\tSpilled Records\u003d0\n\t\tFailed Shuffles\u003d0\n\t\tMerged Map outputs\u003d0\n\t\tGC time elapsed (ms)\u003d0\n\t\tTotal committed heap usage (bytes)\u003d430964736\n\tFile Input Format Counters \n\t\tBytes Read\u003d559\n\tFile Output Format Counters \n\t\tBytes Written\u003d8\n\tDistCp Counters\n\t\tBytes Copied\u003d226763\n\t\tBytes Expected\u003d226763\n\t\tFiles Copied\u003d3\n2019-01-24 08:30:28,248 INFO  [LocalJobRunner Map Task Executor #0] mapred.LocalJobRunner (LocalJobRunner.java:run(249)) - Finishing task: attempt_local874530756_0001_m_000000_0\n2019-01-24 08:30:28,249 INFO  [Thread-6] mapred.LocalJobRunner (LocalJobRunner.java:runTasks(456)) - map task executor complete.\n2019-01-24 08:30:28,731 INFO  [Thread-6] mapred.CopyCommitter (CopyCommitter.java:cleanup(156)) - Cleaning up temporary work folder: file:/tmp/hadoop-root/mapred/staging/root868646216/.staging/_distcp367898809\n2019-01-24 08:30:28,743 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1367)) -  map 100% reduce 0%\n2019-01-24 08:30:28,743 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1378)) - Job job_local874530756_0001 completed successfully\n2019-01-24 08:30:28,751 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1385)) - Counters: 28\n\tFile System Counters\n\t\tFILE: Number of bytes read\u003d132261\n\t\tFILE: Number of bytes written\u003d433205\n\t\tFILE: Number of read operations\u003d0\n\t\tFILE: Number of large read operations\u003d0\n\t\tFILE: Number of write operations\u003d0\n\t\tHDFS: Number of bytes read\u003d226763\n\t\tHDFS: Number of bytes written\u003d0\n\t\tHDFS: Number of read operations\u003d12\n\t\tHDFS: Number of large read operations\u003d0\n\t\tHDFS: Number of write operations\u003d0\n\t\tSWIFT: Number of bytes read\u003d0\n\t\tSWIFT: Number of bytes written\u003d226763\n\t\tSWIFT: Number of read operations\u003d0\n\t\tSWIFT: Number of large read operations\u003d0\n\t\tSWIFT: Number of write operations\u003d0\n\tMap-Reduce Framework\n\t\tMap input records\u003d3\n\t\tMap output records\u003d0\n\t\tInput split bytes\u003d154\n\t\tSpilled Records\u003d0\n\t\tFailed Shuffles\u003d0\n\t\tMerged Map outputs\u003d0\n\t\tGC time elapsed (ms)\u003d0\n\t\tTotal committed heap usage (bytes)\u003d430964736\n\tFile Input Format Counters \n\t\tBytes Read\u003d559\n\tFile Output Format Counters \n\t\tBytes Written\u003d8\n\tDistCp Counters\n\t\tBytes Copied\u003d226763\n\t\tBytes Expected\u003d226763\n\t\tFiles Copied\u003d3\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1548318516596_1072229704",
+      "id": "20190124-082836_452118224",
+      "dateCreated": "2019-01-24 08:28:36.596",
+      "dateStarted": "2019-01-24 08:30:22.277",
+      "dateFinished": "2019-01-24 08:30:29.187",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n### SureChEMBL cPouta (full data)",
+      "user": "anonymous",
+      "dateUpdated": "2019-01-24 16:27:05.889",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eSureChEMBL cPouta (full data)\u003c/h3\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1548347030829_-1140683587",
+      "id": "20190124-162350_863130482",
+      "dateCreated": "2019-01-24 16:23:50.829",
+      "dateStarted": "2019-01-24 16:27:05.890",
+      "dateFinished": "2019-01-24 16:27:05.905",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\nimport se.uu.it.mare._\nval recordDelimiter \u003d \"\\n$$$$\\n\"\nsc.hadoopConfiguration.set(\"textinputformat.record.delimiter\", recordDelimiter)\nval rdd \u003d sc.textFile(\"swift://mare.cpouta/surechembl\")\nnew MaRe(rdd).map(\n    inputMountPoint \u003d TextFile(\"/input.sdf\", recordDelimiter),\n    outputMountPoint \u003d TextFile(\"/output.sdf\", recordDelimiter),\n    imageName \u003d \"mcapuccini/oe:latest\",\n    command \u003d \"fred -receptor /var/openeye/hiv1_protease.oeb \" +\n        \"-hitlist_size 0 \" +\n        \"-conftest none \" +\n        \"-dbase /input.sdf \" +\n        \"-docked_molecule_file /output.sdf\"\n).reduce(\n    inputMountPoint \u003d TextFile(\"/input.sdf\", recordDelimiter),\n    outputMountPoint \u003d TextFile(\"/output.sdf\", recordDelimiter),\n    imageName \u003d \"mcapuccini/sdsorter:latest\",\n    command \u003d \"sdsorter -reversesort\u003d\u0027FRED Chemgauss4 score\u0027 \" +\n        \"-keep-tag\u003d\u0027FRED Chemgauss4 score\u0027 \" +\n        \"-nbest\u003d30 \" +\n        \"/input.sdf \" +\n        \"/output.sdf\"\n).rdd.map(_+\"\\n$$$$\").saveAsTextFile(\"swift://mare.cpouta/surechembl_out_16nodes\")\n// Took 3 hrs 15 min 29 sec",
+      "user": "anonymous",
+      "dateUpdated": "2019-01-25 08:23:12.487",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import se.uu.it.mare._\nrecordDelimiter: String \u003d\n\"\n$$$$\n\"\nrdd: org.apache.spark.rdd.RDD[String] \u003d swift://mare.cpouta/surechembl MapPartitionsRDD[192] at textFile at \u003cconsole\u003e:82\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1548347002649_-1003867442",
+      "id": "20190124-162322_1211610100",
+      "dateCreated": "2019-01-24 16:23:22.649",
+      "dateStarted": "2019-01-24 16:29:55.036",
+      "dateFinished": "2019-01-24 19:45:24.183",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n### AKSci HDFS (full data)",
+      "user": "anonymous",
+      "dateUpdated": "2019-01-24 09:05:44.630",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eAKSci HDFS (full data)\u003c/h3\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1548318668386_-505597939",
+      "id": "20190124-083108_62407565",
+      "dateCreated": "2019-01-24 08:31:08.386",
+      "dateStarted": "2019-01-24 09:05:44.630",
+      "dateFinished": "2019-01-24 09:05:44.645",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\nimport se.uu.it.mare._\nval recordDelimiter \u003d \"\\n$$$$\\n\"\nsc.hadoopConfiguration.set(\"textinputformat.record.delimiter\", recordDelimiter)\nval rdd \u003d sc.textFile(\"hdfs://spark-marco-master-000/aksci\")\nnew MaRe(rdd).map(\n    inputMountPoint \u003d TextFile(\"/input.sdf\", recordDelimiter),\n    outputMountPoint \u003d TextFile(\"/output.sdf\", recordDelimiter),\n    imageName \u003d \"mcapuccini/oe:latest\",\n    command \u003d \"fred -receptor /var/openeye/hiv1_protease.oeb \" +\n        \"-hitlist_size 0 \" +\n        \"-conftest none \" +\n        \"-dbase /input.sdf \" +\n        \"-docked_molecule_file /output.sdf\"\n).reduce(\n    inputMountPoint \u003d TextFile(\"/input.sdf\", recordDelimiter),\n    outputMountPoint \u003d TextFile(\"/output.sdf\", recordDelimiter),\n    imageName \u003d \"mcapuccini/sdsorter:latest\",\n    command \u003d \"sdsorter -reversesort\u003d\u0027FRED Chemgauss4 score\u0027 \" +\n        \"-keep-tag\u003d\u0027FRED Chemgauss4 score\u0027 \" +\n        \"-nbest\u003d30 \" +\n        \"/input.sdf \" +\n        \"/output.sdf\"\n).rdd.map(_+\"\\n$$$$\").saveAsTextFile(\"hdfs://spark-marco-master-000/aksci_top30\")\n// Took 10 min 5 sec",
+      "user": "anonymous",
+      "dateUpdated": "2019-01-26 09:43:33.564",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import se.uu.it.mare._\nrecordDelimiter: String \u003d\n\"\n$$$$\n\"\nrdd: org.apache.spark.rdd.RDD[String] \u003d hdfs://spark-marco-master-000/aksci MapPartitionsRDD[5] at textFile at \u003cconsole\u003e:31\n"
+          }
+        ]
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "http://spark-marco-master-000:4040/jobs/job?id\u003d1"
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "apps": [],
+      "jobName": "paragraph_1548318621609_2013529037",
+      "id": "20190124-083021_1265050998",
+      "dateCreated": "2019-01-24 08:30:21.609",
+      "dateStarted": "2019-01-26 09:31:35.273",
+      "dateFinished": "2019-01-26 09:41:40.517",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sh\n# Persist results in cPouta\nhadoop distcp hdfs://spark-marco-master-000/aksci_top30 swift://mare.cpouta/aksci_top30_16nodes",
+      "user": "anonymous",
+      "dateUpdated": "2019-01-24 10:42:08.657",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/sh",
+        "tableHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "2019-01-24 08:54:58,685 INFO  [main] Configuration.deprecation (Configuration.java:warnOnceIfDeprecated(1243)) - topology.node.switch.mapping.impl is deprecated. Instead, use net.topology.node.switch.mapping.impl\n2019-01-24 08:55:00,267 INFO  [main] tools.DistCp (DistCp.java:run(117)) - Input Options: DistCpOptions{atomicCommit\u003dfalse, syncFolder\u003dfalse, deleteMissing\u003dfalse, ignoreFailures\u003dfalse, maxMaps\u003d20, sslConfigurationFile\u003d\u0027null\u0027, copyStrategy\u003d\u0027uniformsize\u0027, sourceFileListing\u003dnull, sourcePaths\u003d[hdfs://spark-marco-master-000/aksci_top30], targetPath\u003dswift://mare.cpouta/aksci_top30_16nodes, targetPathExists\u003dfalse, preserveRawXattrs\u003dfalse}\n2019-01-24 08:55:00,283 INFO  [main] Configuration.deprecation (Configuration.java:warnOnceIfDeprecated(1243)) - session.id is deprecated. Instead, use dfs.metrics.session-id\n2019-01-24 08:55:00,284 INFO  [main] jvm.JvmMetrics (JvmMetrics.java:init(76)) - Initializing JVM Metrics with processName\u003dJobTracker, sessionId\u003d\n2019-01-24 08:55:01,129 INFO  [main] Configuration.deprecation (Configuration.java:warnOnceIfDeprecated(1243)) - io.sort.mb is deprecated. Instead, use mapreduce.task.io.sort.mb\n2019-01-24 08:55:01,130 INFO  [main] Configuration.deprecation (Configuration.java:warnOnceIfDeprecated(1243)) - io.sort.factor is deprecated. Instead, use mapreduce.task.io.sort.factor\n2019-01-24 08:55:01,164 INFO  [main] jvm.JvmMetrics (JvmMetrics.java:init(71)) - Cannot initialize JVM Metrics with processName\u003dJobTracker, sessionId\u003d - already initialized\n2019-01-24 08:55:01,198 INFO  [main] mapreduce.JobSubmitter (JobSubmitter.java:submitJobInternal(198)) - number of splits:1\n2019-01-24 08:55:01,282 INFO  [main] mapreduce.JobSubmitter (JobSubmitter.java:printTokens(287)) - Submitting tokens for job: job_local1483745464_0001\n2019-01-24 08:55:01,410 INFO  [main] mapreduce.Job (Job.java:submit(1294)) - The url to track the job: http://localhost:8080/\n2019-01-24 08:55:01,411 INFO  [main] tools.DistCp (DistCp.java:createAndSubmitJob(193)) - DistCp job-id: job_local1483745464_0001\n2019-01-24 08:55:01,412 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1339)) - Running job: job_local1483745464_0001\n2019-01-24 08:55:01,412 INFO  [Thread-6] mapred.LocalJobRunner (LocalJobRunner.java:createOutputCommitter(471)) - OutputCommitter set in config null\n2019-01-24 08:55:01,418 INFO  [Thread-6] output.FileOutputCommitter (FileOutputCommitter.java:\u003cinit\u003e(108)) - File Output Committer Algorithm version is 1\n2019-01-24 08:55:01,420 INFO  [Thread-6] mapred.LocalJobRunner (LocalJobRunner.java:createOutputCommitter(489)) - OutputCommitter is org.apache.hadoop.tools.mapred.CopyCommitter\n2019-01-24 08:55:01,462 INFO  [Thread-6] mapred.LocalJobRunner (LocalJobRunner.java:runTasks(448)) - Waiting for map tasks\n2019-01-24 08:55:01,462 INFO  [LocalJobRunner Map Task Executor #0] mapred.LocalJobRunner (LocalJobRunner.java:run(224)) - Starting task: attempt_local1483745464_0001_m_000000_0\n2019-01-24 08:55:01,493 INFO  [LocalJobRunner Map Task Executor #0] output.FileOutputCommitter (FileOutputCommitter.java:\u003cinit\u003e(108)) - File Output Committer Algorithm version is 1\n2019-01-24 08:55:01,511 INFO  [LocalJobRunner Map Task Executor #0] mapred.Task (Task.java:initialize(614)) -  Using ResourceCalculatorProcessTree : [ ]\n2019-01-24 08:55:01,514 INFO  [LocalJobRunner Map Task Executor #0] mapred.MapTask (MapTask.java:runNewMapper(756)) - Processing split: file:/tmp/hadoop-root/mapred/staging/root121175358/.staging/_distcp641973034/fileList.seq:0+508\n2019-01-24 08:55:01,523 INFO  [LocalJobRunner Map Task Executor #0] output.FileOutputCommitter (FileOutputCommitter.java:\u003cinit\u003e(108)) - File Output Committer Algorithm version is 1\n2019-01-24 08:55:01,652 INFO  [LocalJobRunner Map Task Executor #0] mapred.CopyMapper (CopyMapper.java:map(210)) - Copying hdfs://spark-marco-master-000/aksci_top30 to swift://mare.cpouta/aksci_top30_16nodes\n2019-01-24 08:55:01,965 INFO  [LocalJobRunner Map Task Executor #0] mapred.CopyMapper (CopyMapper.java:map(210)) - Copying hdfs://spark-marco-master-000/aksci_top30/_SUCCESS to swift://mare.cpouta/aksci_top30_16nodes/_SUCCESS\n2019-01-24 08:55:02,204 INFO  [LocalJobRunner Map Task Executor #0] mapred.RetriableFileCopyCommand (RetriableFileCopyCommand.java:getTmpFile(232)) - Creating temp file: swift://mare.cpouta/aksci_top30_16nodes/.distcp.tmp.attempt_local1483745464_0001_m_000000_0\n2019-01-24 08:55:02,414 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1360)) - Job job_local1483745464_0001 running in uber mode : false\n2019-01-24 08:55:02,415 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1367)) -  map 0% reduce 0%\n2019-01-24 08:55:03,026 INFO  [LocalJobRunner Map Task Executor #0] mapred.CopyMapper (CopyMapper.java:map(210)) - Copying hdfs://spark-marco-master-000/aksci_top30/part-00000 to swift://mare.cpouta/aksci_top30_16nodes/part-00000\n2019-01-24 08:55:03,230 INFO  [LocalJobRunner Map Task Executor #0] mapred.RetriableFileCopyCommand (RetriableFileCopyCommand.java:getTmpFile(232)) - Creating temp file: swift://mare.cpouta/aksci_top30_16nodes/.distcp.tmp.attempt_local1483745464_0001_m_000000_0\n2019-01-24 08:55:04,145 INFO  [LocalJobRunner Map Task Executor #0] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - \n2019-01-24 08:55:04,146 INFO  [LocalJobRunner Map Task Executor #0] mapred.Task (Task.java:done(1046)) - Task:attempt_local1483745464_0001_m_000000_0 is done. And is in the process of committing\n2019-01-24 08:55:04,156 INFO  [LocalJobRunner Map Task Executor #0] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - \n2019-01-24 08:55:04,156 INFO  [LocalJobRunner Map Task Executor #0] mapred.Task (Task.java:commit(1225)) - Task attempt_local1483745464_0001_m_000000_0 is allowed to commit now\n2019-01-24 08:55:04,158 INFO  [LocalJobRunner Map Task Executor #0] output.FileOutputCommitter (FileOutputCommitter.java:commitTask(535)) - Saved output of task \u0027attempt_local1483745464_0001_m_000000_0\u0027 to file:/tmp/hadoop-root/mapred/staging/root121175358/.staging/_distcp641973034/_logs/_temporary/0/task_local1483745464_0001_m_000000\n2019-01-24 08:55:04,159 INFO  [LocalJobRunner Map Task Executor #0] mapred.LocalJobRunner (LocalJobRunner.java:statusUpdate(591)) - 100.0% Copying hdfs://spark-marco-master-000/aksci_top30/part-00000 to swift://mare.cpouta/aksci_top30_16nodes/part-00000 [203.9K/203.9K]\n2019-01-24 08:55:04,160 INFO  [LocalJobRunner Map Task Executor #0] mapred.Task (Task.java:sendDone(1184)) - Task \u0027attempt_local1483745464_0001_m_000000_0\u0027 done.\n2019-01-24 08:55:04,165 INFO  [LocalJobRunner Map Task Executor #0] mapred.Task (Task.java:done(1080)) - Final Counters for attempt_local1483745464_0001_m_000000_0: Counters: 28\n\tFile System Counters\n\t\tFILE: Number of bytes read\u003d132171\n\t\tFILE: Number of bytes written\u003d434780\n\t\tFILE: Number of read operations\u003d0\n\t\tFILE: Number of large read operations\u003d0\n\t\tFILE: Number of write operations\u003d0\n\t\tHDFS: Number of bytes read\u003d208821\n\t\tHDFS: Number of bytes written\u003d0\n\t\tHDFS: Number of read operations\u003d12\n\t\tHDFS: Number of large read operations\u003d0\n\t\tHDFS: Number of write operations\u003d0\n\t\tSWIFT: Number of bytes read\u003d0\n\t\tSWIFT: Number of bytes written\u003d208821\n\t\tSWIFT: Number of read operations\u003d0\n\t\tSWIFT: Number of large read operations\u003d0\n\t\tSWIFT: Number of write operations\u003d0\n\tMap-Reduce Framework\n\t\tMap input records\u003d3\n\t\tMap output records\u003d0\n\t\tInput split bytes\u003d154\n\t\tSpilled Records\u003d0\n\t\tFailed Shuffles\u003d0\n\t\tMerged Map outputs\u003d0\n\t\tGC time elapsed (ms)\u003d8\n\t\tTotal committed heap usage (bytes)\u003d313524224\n\tFile Input Format Counters \n\t\tBytes Read\u003d544\n\tFile Output Format Counters \n\t\tBytes Written\u003d8\n\tDistCp Counters\n\t\tBytes Copied\u003d208821\n\t\tBytes Expected\u003d208821\n\t\tFiles Copied\u003d3\n2019-01-24 08:55:04,166 INFO  [LocalJobRunner Map Task Executor #0] mapred.LocalJobRunner (LocalJobRunner.java:run(249)) - Finishing task: attempt_local1483745464_0001_m_000000_0\n2019-01-24 08:55:04,166 INFO  [Thread-6] mapred.LocalJobRunner (LocalJobRunner.java:runTasks(456)) - map task executor complete.\n2019-01-24 08:55:04,419 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1367)) -  map 100% reduce 0%\n2019-01-24 08:55:04,647 INFO  [Thread-6] mapred.CopyCommitter (CopyCommitter.java:cleanup(156)) - Cleaning up temporary work folder: file:/tmp/hadoop-root/mapred/staging/root121175358/.staging/_distcp641973034\n2019-01-24 08:55:05,421 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1378)) - Job job_local1483745464_0001 completed successfully\n2019-01-24 08:55:05,431 INFO  [main] mapreduce.Job (Job.java:monitorAndPrintJob(1385)) - Counters: 28\n\tFile System Counters\n\t\tFILE: Number of bytes read\u003d132171\n\t\tFILE: Number of bytes written\u003d434780\n\t\tFILE: Number of read operations\u003d0\n\t\tFILE: Number of large read operations\u003d0\n\t\tFILE: Number of write operations\u003d0\n\t\tHDFS: Number of bytes read\u003d208821\n\t\tHDFS: Number of bytes written\u003d0\n\t\tHDFS: Number of read operations\u003d12\n\t\tHDFS: Number of large read operations\u003d0\n\t\tHDFS: Number of write operations\u003d0\n\t\tSWIFT: Number of bytes read\u003d0\n\t\tSWIFT: Number of bytes written\u003d208821\n\t\tSWIFT: Number of read operations\u003d0\n\t\tSWIFT: Number of large read operations\u003d0\n\t\tSWIFT: Number of write operations\u003d0\n\tMap-Reduce Framework\n\t\tMap input records\u003d3\n\t\tMap output records\u003d0\n\t\tInput split bytes\u003d154\n\t\tSpilled Records\u003d0\n\t\tFailed Shuffles\u003d0\n\t\tMerged Map outputs\u003d0\n\t\tGC time elapsed (ms)\u003d8\n\t\tTotal committed heap usage (bytes)\u003d313524224\n\tFile Input Format Counters \n\t\tBytes Read\u003d544\n\tFile Output Format Counters \n\t\tBytes Written\u003d8\n\tDistCp Counters\n\t\tBytes Copied\u003d208821\n\t\tBytes Expected\u003d208821\n\t\tFiles Copied\u003d3\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1548319878906_1991777874",
+      "id": "20190124-085118_628762099",
+      "dateCreated": "2019-01-24 08:51:18.906",
+      "dateStarted": "2019-01-24 08:54:57.528",
+      "dateFinished": "2019-01-24 08:55:05.916",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n### AKSci cPouta (full data)",
+      "user": "anonymous",
+      "dateUpdated": "2019-01-24 09:08:46.307",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eAKSci cPouta (full data)\u003c/h3\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1548320730275_-1566259920",
+      "id": "20190124-090530_991538611",
+      "dateCreated": "2019-01-24 09:05:30.275",
+      "dateStarted": "2019-01-24 09:08:46.309",
+      "dateFinished": "2019-01-24 09:08:46.319",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\nimport se.uu.it.mare._\nval recordDelimiter \u003d \"\\n$$$$\\n\"\nsc.hadoopConfiguration.set(\"textinputformat.record.delimiter\", recordDelimiter)\nval rdd \u003d sc.textFile(\"swift://mare.cpouta/aksci\", 128)\nnew MaRe(rdd).map(\n    inputMountPoint \u003d TextFile(\"/input.sdf\", recordDelimiter),\n    outputMountPoint \u003d TextFile(\"/output.sdf\", recordDelimiter),\n    imageName \u003d \"mcapuccini/oe:latest\",\n    command \u003d \"fred -receptor /var/openeye/hiv1_protease.oeb \" +\n        \"-hitlist_size 0 \" +\n        \"-conftest none \" +\n        \"-dbase /input.sdf \" +\n        \"-docked_molecule_file /output.sdf\"\n).reduce(\n    inputMountPoint \u003d TextFile(\"/input.sdf\", recordDelimiter),\n    outputMountPoint \u003d TextFile(\"/output.sdf\", recordDelimiter),\n    imageName \u003d \"mcapuccini/sdsorter:latest\",\n    command \u003d \"sdsorter -reversesort\u003d\u0027FRED Chemgauss4 score\u0027 \" +\n        \"-keep-tag\u003d\u0027FRED Chemgauss4 score\u0027 \" +\n        \"-nbest\u003d30 \" +\n        \"/input.sdf \" +\n        \"/output.sdf\"\n).rdd.map(_+\"\\n$$$$\").saveAsTextFile(\"swift://mare.cpouta/aksci_out_16nodes\")\n// Took 10 min 9 sec",
+      "user": "anonymous",
+      "dateUpdated": "2019-01-25 10:28:07.824",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "tableHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import se.uu.it.mare._\nrecordDelimiter: String \u003d\n\"\n$$$$\n\"\nrdd: org.apache.spark.rdd.RDD[String] \u003d swift://mare.cpouta/aksci MapPartitionsRDD[93] at textFile at \u003cconsole\u003e:55\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1548320084698_-1058205803",
+      "id": "20190124-085444_1769479921",
+      "dateCreated": "2019-01-24 08:54:44.698",
+      "dateStarted": "2019-01-24 09:42:42.429",
+      "dateFinished": "2019-01-24 09:52:51.126",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-01-25 09:34:43.333",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1548321098780_911488200",
+      "id": "20190124-091138_53292965",
+      "dateCreated": "2019-01-24 09:11:38.780",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "MaRe VS (16 nodes)",
+  "id": "2E2SAK9VS",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

@@ -1,0 +1,251 @@
+{
+  "paragraphs": [
+    {
+      "text": "%sh\nhadoop fs -ls -h s3n://1000genomes/phase3/data/HG02666/sequence_read/",
+      "user": "anonymous",
+      "dateUpdated": "2019-04-02 09:40:57.543",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Found 288 items\n-rw-rw-rw-   1    656.5 K 2015-05-20 19:23 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR580965.filt.fastq.gz\n-rw-rw-rw-   1    120.2 M 2015-05-20 19:37 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR580965_1.filt.fastq.gz\n-rw-rw-rw-   1    121.5 M 2015-05-20 19:36 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR580965_2.filt.fastq.gz\n-rw-rw-rw-   1    183.0 K 2015-05-20 19:37 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR580969.filt.fastq.gz\n-rw-rw-rw-   1    124.4 M 2015-05-20 19:30 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR580969_1.filt.fastq.gz\n-rw-rw-rw-   1    126.7 M 2015-05-20 19:38 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR580969_2.filt.fastq.gz\n-rw-rw-rw-   1    523.6 K 2015-05-20 19:19 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR580984.filt.fastq.gz\n-rw-rw-rw-   1    123.0 M 2015-05-20 19:38 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR580984_1.filt.fastq.gz\n-rw-rw-rw-   1    124.6 M 2015-05-20 19:36 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR580984_2.filt.fastq.gz\n-rw-rw-rw-   1    683.0 K 2015-05-20 19:38 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581056.filt.fastq.gz\n-rw-rw-rw-   1    123.4 M 2015-05-20 19:39 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581056_1.filt.fastq.gz\n-rw-rw-rw-   1    124.9 M 2015-05-20 19:23 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581056_2.filt.fastq.gz\n-rw-rw-rw-   1    501.3 K 2015-05-20 19:23 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581076.filt.fastq.gz\n-rw-rw-rw-   1    113.5 M 2015-05-20 19:38 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581076_1.filt.fastq.gz\n-rw-rw-rw-   1    114.7 M 2015-05-20 19:23 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581076_2.filt.fastq.gz\n-rw-rw-rw-   1    237.5 K 2015-05-20 19:39 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581142.filt.fastq.gz\n-rw-rw-rw-   1    126.8 M 2015-05-20 19:38 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581142_1.filt.fastq.gz\n-rw-rw-rw-   1    129.9 M 2015-05-20 19:40 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581142_2.filt.fastq.gz\n-rw-rw-rw-   1    510.3 K 2015-05-20 19:39 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581210.filt.fastq.gz\n-rw-rw-rw-   1    117.6 M 2015-05-20 19:37 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581210_1.filt.fastq.gz\n-rw-rw-rw-   1    118.9 M 2015-05-20 19:23 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581210_2.filt.fastq.gz\n-rw-rw-rw-   1    577.2 K 2015-05-20 19:40 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581223.filt.fastq.gz\n-rw-rw-rw-   1    119.7 M 2015-05-20 19:31 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581223_1.filt.fastq.gz\n-rw-rw-rw-   1    120.7 M 2015-05-20 19:23 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581223_2.filt.fastq.gz\n-rw-rw-rw-   1    463.0 K 2015-05-20 19:37 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581242.filt.fastq.gz\n-rw-rw-rw-   1    117.4 M 2015-05-20 19:40 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581242_1.filt.fastq.gz\n-rw-rw-rw-   1    118.3 M 2015-05-20 19:39 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581242_2.filt.fastq.gz\n-rw-rw-rw-   1    480.3 K 2015-05-20 19:21 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581250.filt.fastq.gz\n-rw-rw-rw-   1    119.6 M 2015-05-20 19:23 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581250_1.filt.fastq.gz\n-rw-rw-rw-   1    121.0 M 2015-05-20 19:21 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581250_2.filt.fastq.gz\n-rw-rw-rw-   1    614.7 K 2015-05-20 19:39 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581514.filt.fastq.gz\n-rw-rw-rw-   1    122.8 M 2015-05-20 19:23 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581514_1.filt.fastq.gz\n-rw-rw-rw-   1    124.1 M 2015-05-20 19:22 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581514_2.filt.fastq.gz\n-rw-rw-rw-   1    272.2 K 2015-05-20 19:39 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581608.filt.fastq.gz\n-rw-rw-rw-   1    127.0 M 2015-05-20 19:21 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581608_1.filt.fastq.gz\n-rw-rw-rw-   1    128.5 M 2015-05-20 19:22 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581608_2.filt.fastq.gz\n-rw-rw-rw-   1    547.5 K 2015-05-20 19:37 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581609.filt.fastq.gz\n-rw-rw-rw-   1    122.9 M 2015-05-20 19:31 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581609_1.filt.fastq.gz\n-rw-rw-rw-   1    124.5 M 2015-05-20 19:37 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581609_2.filt.fastq.gz\n-rw-rw-rw-   1    520.0 K 2015-05-20 19:23 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581714.filt.fastq.gz\n-rw-rw-rw-   1    124.3 M 2015-05-20 19:22 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581714_1.filt.fastq.gz\n-rw-rw-rw-   1    125.7 M 2015-05-20 19:40 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581714_2.filt.fastq.gz\n-rw-rw-rw-   1    706.4 K 2015-05-20 19:31 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581725.filt.fastq.gz\n-rw-rw-rw-   1    123.2 M 2015-05-20 19:24 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581725_1.filt.fastq.gz\n-rw-rw-rw-   1    124.7 M 2015-05-20 19:22 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581725_2.filt.fastq.gz\n-rw-rw-rw-   1    633.7 K 2015-05-20 19:36 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581869.filt.fastq.gz\n-rw-rw-rw-   1    126.8 M 2015-05-20 19:40 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581869_1.filt.fastq.gz\n-rw-rw-rw-   1    129.1 M 2015-05-20 19:22 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581869_2.filt.fastq.gz\n-rw-rw-rw-   1    482.1 K 2015-05-20 19:40 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581891.filt.fastq.gz\n-rw-rw-rw-   1    119.1 M 2015-05-20 19:40 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581891_1.filt.fastq.gz\n-rw-rw-rw-   1    120.4 M 2015-05-20 19:24 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581891_2.filt.fastq.gz\n-rw-rw-rw-   1    439.2 K 2015-05-20 19:22 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581920.filt.fastq.gz\n-rw-rw-rw-   1    119.4 M 2015-05-20 19:38 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581920_1.filt.fastq.gz\n-rw-rw-rw-   1    120.9 M 2015-05-20 19:22 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581920_2.filt.fastq.gz\n-rw-rw-rw-   1    367.9 K 2015-05-20 19:41 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581953.filt.fastq.gz\n-rw-rw-rw-   1    127.2 M 2015-05-20 19:24 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581953_1.filt.fastq.gz\n-rw-rw-rw-   1    129.1 M 2015-05-20 19:40 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581953_2.filt.fastq.gz\n-rw-rw-rw-   1    244.6 K 2015-05-20 19:40 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581977.filt.fastq.gz\n-rw-rw-rw-   1    122.7 M 2015-05-20 19:31 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581977_1.filt.fastq.gz\n-rw-rw-rw-   1    124.7 M 2015-05-20 19:32 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR581977_2.filt.fastq.gz\n-rw-rw-rw-   1    254.3 K 2015-05-20 19:23 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582042.filt.fastq.gz\n-rw-rw-rw-   1    125.8 M 2015-05-20 19:23 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582042_1.filt.fastq.gz\n-rw-rw-rw-   1    128.8 M 2015-05-20 19:31 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582042_2.filt.fastq.gz\n-rw-rw-rw-   1    493.3 K 2015-05-20 19:23 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582133.filt.fastq.gz\n-rw-rw-rw-   1    120.3 M 2015-05-20 19:23 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582133_1.filt.fastq.gz\n-rw-rw-rw-   1    121.7 M 2015-05-20 19:25 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582133_2.filt.fastq.gz\n-rw-rw-rw-   1      1.2 M 2015-05-20 19:23 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582169.filt.fastq.gz\n-rw-rw-rw-   1    169.9 M 2015-05-20 19:41 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582169_1.filt.fastq.gz\n-rw-rw-rw-   1    174.7 M 2015-05-20 19:40 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582169_2.filt.fastq.gz\n-rw-rw-rw-   1      3.8 M 2015-05-20 19:41 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582194.filt.fastq.gz\n-rw-rw-rw-   1    192.9 M 2015-05-20 19:25 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582194_1.filt.fastq.gz\n-rw-rw-rw-   1    197.4 M 2015-05-20 19:39 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582194_2.filt.fastq.gz\n-rw-rw-rw-   1    921.6 K 2015-05-20 19:31 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582256.filt.fastq.gz\n-rw-rw-rw-   1    181.3 M 2015-05-20 19:39 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582256_1.filt.fastq.gz\n-rw-rw-rw-   1    185.4 M 2015-05-20 19:25 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582256_2.filt.fastq.gz\n-rw-rw-rw-   1      1.8 M 2015-05-20 19:22 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582266.filt.fastq.gz\n-rw-rw-rw-   1    166.9 M 2015-05-20 19:25 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582266_1.filt.fastq.gz\n-rw-rw-rw-   1    170.6 M 2015-05-20 19:33 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582266_2.filt.fastq.gz\n-rw-rw-rw-   1      1.2 M 2015-05-20 19:39 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582310.filt.fastq.gz\n-rw-rw-rw-   1    198.7 M 2015-05-20 19:32 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582310_1.filt.fastq.gz\n-rw-rw-rw-   1    203.9 M 2015-05-20 19:33 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582310_2.filt.fastq.gz\n-rw-rw-rw-   1     27.0 M 2015-05-20 19:23 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582521.filt.fastq.gz\n-rw-rw-rw-   1    149.5 M 2015-05-20 19:41 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582521_1.filt.fastq.gz\n-rw-rw-rw-   1    154.7 M 2015-05-20 19:24 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582521_2.filt.fastq.gz\n-rw-rw-rw-   1      1.1 M 2015-05-20 19:32 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582548.filt.fastq.gz\n-rw-rw-rw-   1    173.2 M 2015-05-20 19:33 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582548_1.filt.fastq.gz\n-rw-rw-rw-   1    177.0 M 2015-05-20 19:34 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582548_2.filt.fastq.gz\n-rw-rw-rw-   1    889.8 K 2015-05-20 19:41 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582588.filt.fastq.gz\n-rw-rw-rw-   1    174.7 M 2015-05-20 19:41 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582588_1.filt.fastq.gz\n-rw-rw-rw-   1    178.4 M 2015-05-20 19:25 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582588_2.filt.fastq.gz\n-rw-rw-rw-   1      1.3 M 2015-05-20 19:25 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582762.filt.fastq.gz\n-rw-rw-rw-   1    174.0 M 2015-05-20 19:34 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582762_1.filt.fastq.gz\n-rw-rw-rw-   1    179.2 M 2015-05-20 19:40 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582762_2.filt.fastq.gz\n-rw-rw-rw-   1    528.2 K 2015-05-20 19:23 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582905.filt.fastq.gz\n-rw-rw-rw-   1    193.8 M 2015-05-20 19:23 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582905_1.filt.fastq.gz\n-rw-rw-rw-   1    200.0 M 2015-05-20 19:41 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582905_2.filt.fastq.gz\n-rw-rw-rw-   1      1.8 M 2015-05-20 19:24 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582950.filt.fastq.gz\n-rw-rw-rw-   1    190.0 M 2015-05-20 19:41 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582950_1.filt.fastq.gz\n-rw-rw-rw-   1    195.5 M 2015-05-20 19:39 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR582950_2.filt.fastq.gz\n-rw-rw-rw-   1      2.1 M 2015-05-20 19:24 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR583026.filt.fastq.gz\n-rw-rw-rw-   1    164.2 M 2015-05-20 19:41 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR583026_1.filt.fastq.gz\n-rw-rw-rw-   1    168.2 M 2015-05-20 19:39 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR583026_2.filt.fastq.gz\n-rw-rw-rw-   1     31.6 M 2015-05-20 19:25 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR583036.filt.fastq.gz\n-rw-rw-rw-   1    149.7 M 2015-05-20 19:34 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR583036_1.filt.fastq.gz\n-rw-rw-rw-   1    154.6 M 2015-05-20 19:34 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR583036_2.filt.fastq.gz\n-rw-rw-rw-   1    994.1 K 2015-05-20 19:26 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR583043.filt.fastq.gz\n-rw-rw-rw-   1    174.8 M 2015-05-20 19:38 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR583043_1.filt.fastq.gz\n-rw-rw-rw-   1    178.6 M 2015-05-20 19:40 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR583043_2.filt.fastq.gz\n-rw-rw-rw-   1      1.5 M 2015-05-20 19:24 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR583055.filt.fastq.gz\n-rw-rw-rw-   1    204.5 M 2015-05-20 19:41 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR583055_1.filt.fastq.gz\n-rw-rw-rw-   1    209.8 M 2015-05-20 19:39 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR583055_2.filt.fastq.gz\n-rw-rw-rw-   1      1.3 M 2015-05-20 19:42 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR583172.filt.fastq.gz\n-rw-rw-rw-   1    169.4 M 2015-05-20 19:26 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR583172_1.filt.fastq.gz\n-rw-rw-rw-   1    173.7 M 2015-05-20 19:41 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR583172_2.filt.fastq.gz\n-rw-rw-rw-   1      1.3 M 2015-05-20 19:25 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR583195.filt.fastq.gz\n-rw-rw-rw-   1    169.7 M 2015-05-20 19:24 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR583195_1.filt.fastq.gz\n-rw-rw-rw-   1    174.4 M 2015-05-20 19:42 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR583195_2.filt.fastq.gz\n-rw-rw-rw-   1    325.7 K 2015-05-20 19:34 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR583202.filt.fastq.gz\n-rw-rw-rw-   1    197.1 M 2015-05-20 19:26 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR583202_1.filt.fastq.gz\n-rw-rw-rw-   1    203.9 M 2015-05-20 19:34 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR583202_2.filt.fastq.gz\n-rw-rw-rw-   1    953.9 K 2015-05-20 19:34 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR583204.filt.fastq.gz\n-rw-rw-rw-   1    177.7 M 2015-05-20 19:26 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR583204_1.filt.fastq.gz\n-rw-rw-rw-   1    181.1 M 2015-05-20 19:26 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR583204_2.filt.fastq.gz\n-rw-rw-rw-   1      3.2 M 2015-05-20 19:26 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR583358.filt.fastq.gz\n-rw-rw-rw-   1    192.7 M 2015-05-20 19:39 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR583358_1.filt.fastq.gz\n-rw-rw-rw-   1    197.1 M 2015-05-20 19:35 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR583358_2.filt.fastq.gz\n-rw-rw-rw-   1      4.2 M 2015-05-20 19:40 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR583415.filt.fastq.gz\n-rw-rw-rw-   1    189.7 M 2015-05-20 19:32 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR583415_1.filt.fastq.gz\n-rw-rw-rw-   1    194.0 M 2015-05-20 19:26 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR583415_2.filt.fastq.gz\n-rw-rw-rw-   1      1.2 M 2015-05-20 19:25 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR583947.filt.fastq.gz\n-rw-rw-rw-   1    167.8 M 2015-05-20 19:34 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR583947_1.filt.fastq.gz\n-rw-rw-rw-   1    171.3 M 2015-05-20 19:24 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR583947_2.filt.fastq.gz\n-rw-rw-rw-   1      1.3 M 2015-05-20 19:26 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584216.filt.fastq.gz\n-rw-rw-rw-   1    170.4 M 2015-05-20 19:40 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584216_1.filt.fastq.gz\n-rw-rw-rw-   1    174.3 M 2015-05-20 19:40 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584216_2.filt.fastq.gz\n-rw-rw-rw-   1      3.7 M 2015-05-20 19:26 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584242.filt.fastq.gz\n-rw-rw-rw-   1    192.8 M 2015-05-20 19:27 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584242_1.filt.fastq.gz\n-rw-rw-rw-   1    197.9 M 2015-05-20 19:39 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584242_2.filt.fastq.gz\n-rw-rw-rw-   1    943.9 K 2015-05-20 19:24 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584243.filt.fastq.gz\n-rw-rw-rw-   1    174.9 M 2015-05-20 19:42 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584243_1.filt.fastq.gz\n-rw-rw-rw-   1    178.8 M 2015-05-20 19:35 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584243_2.filt.fastq.gz\n-rw-rw-rw-   1      1.2 M 2015-05-20 19:42 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584288.filt.fastq.gz\n-rw-rw-rw-   1    188.3 M 2015-05-20 19:27 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584288_1.filt.fastq.gz\n-rw-rw-rw-   1    192.4 M 2015-05-20 19:35 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584288_2.filt.fastq.gz\n-rw-rw-rw-   1      4.1 M 2015-05-20 19:27 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584357.filt.fastq.gz\n-rw-rw-rw-   1    193.0 M 2015-05-20 19:40 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584357_1.filt.fastq.gz\n-rw-rw-rw-   1    197.6 M 2015-05-20 19:41 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584357_2.filt.fastq.gz\n-rw-rw-rw-   1      1.3 M 2015-05-20 19:41 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584365.filt.fastq.gz\n-rw-rw-rw-   1    200.1 M 2015-05-20 19:40 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584365_1.filt.fastq.gz\n-rw-rw-rw-   1    205.4 M 2015-05-20 19:40 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584365_2.filt.fastq.gz\n-rw-rw-rw-   1    940.7 K 2015-05-20 19:40 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584415.filt.fastq.gz\n-rw-rw-rw-   1    175.0 M 2015-05-20 19:41 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584415_1.filt.fastq.gz\n-rw-rw-rw-   1    180.1 M 2015-05-20 19:42 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584415_2.filt.fastq.gz\n-rw-rw-rw-   1      1.2 M 2015-05-20 19:35 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584468.filt.fastq.gz\n-rw-rw-rw-   1    174.4 M 2015-05-20 19:27 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584468_1.filt.fastq.gz\n-rw-rw-rw-   1    178.0 M 2015-05-20 19:25 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584468_2.filt.fastq.gz\n-rw-rw-rw-   1     12.1 M 2015-05-20 19:27 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584506.filt.fastq.gz\n-rw-rw-rw-   1    168.0 M 2015-05-20 19:35 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584506_1.filt.fastq.gz\n-rw-rw-rw-   1    174.3 M 2015-05-20 19:42 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584506_2.filt.fastq.gz\n-rw-rw-rw-   1    946.7 K 2015-05-20 19:24 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584538.filt.fastq.gz\n-rw-rw-rw-   1    169.4 M 2015-05-20 19:42 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584538_1.filt.fastq.gz\n-rw-rw-rw-   1    174.7 M 2015-05-20 19:42 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584538_2.filt.fastq.gz\n-rw-rw-rw-   1      1.2 M 2015-05-20 19:27 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584593.filt.fastq.gz\n-rw-rw-rw-   1    171.0 M 2015-05-20 19:35 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584593_1.filt.fastq.gz\n-rw-rw-rw-   1    174.6 M 2015-05-20 19:26 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584593_2.filt.fastq.gz\n-rw-rw-rw-   1    969.0 K 2015-05-20 19:27 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584686.filt.fastq.gz\n-rw-rw-rw-   1    175.6 M 2015-05-20 19:25 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584686_1.filt.fastq.gz\n-rw-rw-rw-   1    179.0 M 2015-05-20 19:42 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584686_2.filt.fastq.gz\n-rw-rw-rw-   1      1.2 M 2015-05-20 19:42 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584759.filt.fastq.gz\n-rw-rw-rw-   1    173.3 M 2015-05-20 19:28 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584759_1.filt.fastq.gz\n-rw-rw-rw-   1    177.0 M 2015-05-20 19:36 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584759_2.filt.fastq.gz\n-rw-rw-rw-   1      9.1 M 2015-05-20 19:42 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584761.filt.fastq.gz\n-rw-rw-rw-   1    166.4 M 2015-05-20 19:42 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584761_1.filt.fastq.gz\n-rw-rw-rw-   1    172.8 M 2015-05-20 19:42 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584761_2.filt.fastq.gz\n-rw-rw-rw-   1      1.2 M 2015-05-20 19:35 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584834.filt.fastq.gz\n-rw-rw-rw-   1    169.4 M 2015-05-20 19:36 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584834_1.filt.fastq.gz\n-rw-rw-rw-   1    174.9 M 2015-05-20 19:42 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584834_2.filt.fastq.gz\n-rw-rw-rw-   1    994.6 K 2015-05-20 19:28 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584847.filt.fastq.gz\n-rw-rw-rw-   1    173.6 M 2015-05-20 19:42 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584847_1.filt.fastq.gz\n-rw-rw-rw-   1    177.7 M 2015-05-20 19:28 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584847_2.filt.fastq.gz\n-rw-rw-rw-   1      3.3 M 2015-05-20 19:42 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584849.filt.fastq.gz\n-rw-rw-rw-   1    191.5 M 2015-05-20 19:42 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584849_1.filt.fastq.gz\n-rw-rw-rw-   1    196.0 M 2015-05-20 19:25 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584849_2.filt.fastq.gz\n-rw-rw-rw-   1    451.7 K 2015-05-20 19:41 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584898.filt.fastq.gz\n-rw-rw-rw-   1    197.9 M 2015-05-20 19:28 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584898_1.filt.fastq.gz\n-rw-rw-rw-   1    203.1 M 2015-05-20 19:37 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584898_2.filt.fastq.gz\n-rw-rw-rw-   1      1.3 M 2015-05-20 19:43 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584918.filt.fastq.gz\n-rw-rw-rw-   1    172.5 M 2015-05-20 19:37 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584918_1.filt.fastq.gz\n-rw-rw-rw-   1    176.3 M 2015-05-20 19:41 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584918_2.filt.fastq.gz\n-rw-rw-rw-   1      1.4 M 2015-05-20 19:43 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584988.filt.fastq.gz\n-rw-rw-rw-   1    204.4 M 2015-05-20 19:42 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584988_1.filt.fastq.gz\n-rw-rw-rw-   1    209.6 M 2015-05-20 19:25 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584988_2.filt.fastq.gz\n-rw-rw-rw-   1    741.3 K 2015-05-20 19:28 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584999.filt.fastq.gz\n-rw-rw-rw-   1    197.4 M 2015-05-20 19:28 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584999_1.filt.fastq.gz\n-rw-rw-rw-   1    203.9 M 2015-05-20 19:25 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR584999_2.filt.fastq.gz\n-rw-rw-rw-   1      1.3 M 2015-05-20 19:43 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR585204.filt.fastq.gz\n-rw-rw-rw-   1    174.6 M 2015-05-20 19:43 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR585204_1.filt.fastq.gz\n-rw-rw-rw-   1    179.0 M 2015-05-20 19:40 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR585204_2.filt.fastq.gz\n-rw-rw-rw-   1      1.3 M 2015-05-20 19:24 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR586121.filt.fastq.gz\n-rw-rw-rw-   1    167.6 M 2015-05-20 19:28 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR586121_1.filt.fastq.gz\n-rw-rw-rw-   1    171.2 M 2015-05-20 19:37 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR586121_2.filt.fastq.gz\n-rw-rw-rw-   1      5.4 M 2015-05-20 19:36 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR586157.filt.fastq.gz\n-rw-rw-rw-   1    165.6 M 2015-05-20 19:43 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR586157_1.filt.fastq.gz\n-rw-rw-rw-   1    171.9 M 2015-05-20 19:30 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR586157_2.filt.fastq.gz\n-rw-rw-rw-   1      1.0 M 2015-05-20 19:43 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR586302.filt.fastq.gz\n-rw-rw-rw-   1    173.6 M 2015-05-20 19:42 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR586302_1.filt.fastq.gz\n-rw-rw-rw-   1    178.4 M 2015-05-20 19:37 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR586302_2.filt.fastq.gz\n-rw-rw-rw-   1     41.0 M 2015-05-20 19:43 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR586810.filt.fastq.gz\n-rw-rw-rw-   1    132.0 M 2015-05-20 19:44 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR586810_1.filt.fastq.gz\n-rw-rw-rw-   1    134.6 M 2015-05-20 19:38 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR586810_2.filt.fastq.gz\n-rw-rw-rw-   1    517.3 K 2015-05-20 19:26 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR586838.filt.fastq.gz\n-rw-rw-rw-   1    196.4 M 2015-05-20 19:37 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR586838_1.filt.fastq.gz\n-rw-rw-rw-   1    203.0 M 2015-05-20 19:43 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR586838_2.filt.fastq.gz\n-rw-rw-rw-   1    614.1 K 2015-05-20 19:43 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587286.filt.fastq.gz\n-rw-rw-rw-   1    170.4 M 2015-05-20 19:44 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587286_1.filt.fastq.gz\n-rw-rw-rw-   1    173.8 M 2015-05-20 19:44 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587286_2.filt.fastq.gz\n-rw-rw-rw-   1      3.5 M 2015-05-20 19:30 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587357.filt.fastq.gz\n-rw-rw-rw-   1    194.6 M 2015-05-20 19:29 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587357_1.filt.fastq.gz\n-rw-rw-rw-   1    198.9 M 2015-05-20 19:37 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587357_2.filt.fastq.gz\n-rw-rw-rw-   1      1.3 M 2015-05-20 19:43 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587407.filt.fastq.gz\n-rw-rw-rw-   1    173.1 M 2015-05-20 19:45 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587407_1.filt.fastq.gz\n-rw-rw-rw-   1    177.5 M 2015-05-20 19:30 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587407_2.filt.fastq.gz\n-rw-rw-rw-   1    550.7 K 2015-05-20 19:43 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587461.filt.fastq.gz\n-rw-rw-rw-   1    196.2 M 2015-05-20 19:37 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587461_1.filt.fastq.gz\n-rw-rw-rw-   1    202.4 M 2015-05-20 19:44 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587461_2.filt.fastq.gz\n-rw-rw-rw-   1      1.0 M 2015-05-20 19:45 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587463.filt.fastq.gz\n-rw-rw-rw-   1    175.1 M 2015-05-20 19:43 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587463_1.filt.fastq.gz\n-rw-rw-rw-   1    179.5 M 2015-05-20 19:26 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587463_2.filt.fastq.gz\n-rw-rw-rw-   1      1.1 M 2015-05-20 19:25 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587475.filt.fastq.gz\n-rw-rw-rw-   1    201.4 M 2015-05-20 19:45 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587475_1.filt.fastq.gz\n-rw-rw-rw-   1    207.0 M 2015-05-20 19:45 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587475_2.filt.fastq.gz\n-rw-rw-rw-   1    842.3 K 2015-05-20 19:45 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587499.filt.fastq.gz\n-rw-rw-rw-   1    168.1 M 2015-05-20 19:43 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587499_1.filt.fastq.gz\n-rw-rw-rw-   1    173.3 M 2015-05-20 19:38 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587499_2.filt.fastq.gz\n-rw-rw-rw-   1      2.1 M 2015-05-20 19:38 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587539.filt.fastq.gz\n-rw-rw-rw-   1    165.9 M 2015-05-20 19:45 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587539_1.filt.fastq.gz\n-rw-rw-rw-   1    170.1 M 2015-05-20 19:39 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587539_2.filt.fastq.gz\n-rw-rw-rw-   1      1.3 M 2015-05-20 19:45 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587644.filt.fastq.gz\n-rw-rw-rw-   1    193.9 M 2015-05-20 19:43 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587644_1.filt.fastq.gz\n-rw-rw-rw-   1    199.4 M 2015-05-20 19:46 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587644_2.filt.fastq.gz\n-rw-rw-rw-   1      1.3 M 2015-05-20 19:45 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587695.filt.fastq.gz\n-rw-rw-rw-   1    171.1 M 2015-05-20 19:43 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587695_1.filt.fastq.gz\n-rw-rw-rw-   1    175.5 M 2015-05-20 19:46 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587695_2.filt.fastq.gz\n-rw-rw-rw-   1      3.6 M 2015-05-20 19:45 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587722.filt.fastq.gz\n-rw-rw-rw-   1    194.9 M 2015-05-20 19:43 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587722_1.filt.fastq.gz\n-rw-rw-rw-   1    199.4 M 2015-05-20 19:30 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587722_2.filt.fastq.gz\n-rw-rw-rw-   1      2.4 M 2015-05-20 19:45 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587741.filt.fastq.gz\n-rw-rw-rw-   1    165.2 M 2015-05-20 19:39 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587741_1.filt.fastq.gz\n-rw-rw-rw-   1    169.8 M 2015-05-20 19:42 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587741_2.filt.fastq.gz\n-rw-rw-rw-   1    958.8 K 2015-05-20 19:46 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587779.filt.fastq.gz\n-rw-rw-rw-   1    174.8 M 2015-05-20 19:43 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587779_1.filt.fastq.gz\n-rw-rw-rw-   1    179.8 M 2015-05-20 19:26 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587779_2.filt.fastq.gz\n-rw-rw-rw-   1      4.6 M 2015-05-20 19:38 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587810.filt.fastq.gz\n-rw-rw-rw-   1    171.0 M 2015-05-20 19:45 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587810_1.filt.fastq.gz\n-rw-rw-rw-   1    177.1 M 2015-05-20 19:46 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587810_2.filt.fastq.gz\n-rw-rw-rw-   1      3.5 M 2015-05-20 19:45 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587812.filt.fastq.gz\n-rw-rw-rw-   1    192.5 M 2015-05-20 19:26 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587812_1.filt.fastq.gz\n-rw-rw-rw-   1    197.2 M 2015-05-20 19:46 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587812_2.filt.fastq.gz\n-rw-rw-rw-   1      6.0 M 2015-05-20 19:46 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587865.filt.fastq.gz\n-rw-rw-rw-   1    169.9 M 2015-05-20 19:26 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587865_1.filt.fastq.gz\n-rw-rw-rw-   1    176.2 M 2015-05-20 19:26 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587865_2.filt.fastq.gz\n-rw-rw-rw-   1      1.5 M 2015-05-20 19:46 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587890.filt.fastq.gz\n-rw-rw-rw-   1    199.0 M 2015-05-20 19:43 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587890_1.filt.fastq.gz\n-rw-rw-rw-   1    204.6 M 2015-05-20 19:43 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587890_2.filt.fastq.gz\n-rw-rw-rw-   1    995.3 K 2015-05-20 19:43 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587944.filt.fastq.gz\n-rw-rw-rw-   1    171.4 M 2015-05-20 19:28 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587944_1.filt.fastq.gz\n-rw-rw-rw-   1    176.1 M 2015-05-20 19:27 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR587944_2.filt.fastq.gz\n-rw-rw-rw-   1    527.5 K 2015-05-20 19:26 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR588061.filt.fastq.gz\n-rw-rw-rw-   1    195.9 M 2015-05-20 19:46 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR588061_1.filt.fastq.gz\n-rw-rw-rw-   1    202.1 M 2015-05-20 19:46 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR588061_2.filt.fastq.gz\n-rw-rw-rw-   1    681.4 K 2015-05-20 19:47 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR588212.filt.fastq.gz\n-rw-rw-rw-   1    195.3 M 2015-05-20 19:38 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR588212_1.filt.fastq.gz\n-rw-rw-rw-   1    201.5 M 2015-05-20 19:30 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR588212_2.filt.fastq.gz\n-rw-rw-rw-   1    856.4 K 2015-05-20 19:26 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR588214.filt.fastq.gz\n-rw-rw-rw-   1    173.0 M 2015-05-20 19:47 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR588214_1.filt.fastq.gz\n-rw-rw-rw-   1    176.8 M 2015-05-20 19:27 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR588214_2.filt.fastq.gz\n-rw-rw-rw-   1      1.5 M 2015-05-20 19:31 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR588249.filt.fastq.gz\n-rw-rw-rw-   1    166.7 M 2015-05-20 19:45 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR588249_1.filt.fastq.gz\n-rw-rw-rw-   1    170.6 M 2015-05-20 19:39 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR588249_2.filt.fastq.gz\n-rw-rw-rw-   1      1.3 M 2015-05-20 19:46 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR588252.filt.fastq.gz\n-rw-rw-rw-   1    172.5 M 2015-05-20 19:40 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR588252_1.filt.fastq.gz\n-rw-rw-rw-   1    177.5 M 2015-05-20 19:41 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR588252_2.filt.fastq.gz\n-rw-rw-rw-   1      1.2 M 2015-05-20 19:27 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR588267.filt.fastq.gz\n-rw-rw-rw-   1    200.1 M 2015-05-20 19:46 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR588267_1.filt.fastq.gz\n-rw-rw-rw-   1    205.6 M 2015-05-20 19:31 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR588267_2.filt.fastq.gz\n-rw-rw-rw-   1    555.3 K 2015-05-20 19:47 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR628664.filt.fastq.gz\n-rw-rw-rw-   1    125.5 M 2015-05-20 19:27 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR628664_1.filt.fastq.gz\n-rw-rw-rw-   1    127.2 M 2015-05-20 19:44 s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR628664_2.filt.fastq.gz\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1553610379392_1987025309",
+      "id": "20190326-142619_537858873",
+      "dateCreated": "2019-03-26 14:26:19.392",
+      "dateStarted": "2019-04-02 09:40:58.053",
+      "dateFinished": "2019-04-02 09:41:01.970",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark.dep\n// Download deps\nz.reset\nz.load(\"org.bdgenomics.adam:adam-core-spark2_2.11:0.25.0\")\nz.addRepo(\"sonatype\").url(\"https://oss.sonatype.org/content/repositories/snapshots/\").snapshot\nz.load(\"se.uu.it:mare:0.4.0-SNAPSHOT\")",
+      "user": "anonymous",
+      "dateUpdated": "2019-04-02 09:47:13.782",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "res0: org.apache.zeppelin.dep.Dependency \u003d org.apache.zeppelin.dep.Dependency@7780de6a\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1553610222237_-19751191",
+      "id": "20190326-142342_1419080506",
+      "dateCreated": "2019-03-26 14:23:42.237",
+      "dateStarted": "2019-04-02 09:47:14.313",
+      "dateFinished": "2019-04-02 09:47:24.102",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\nimport org.bdgenomics.adam.io._\nimport org.apache.hadoop.io.Text\nimport se.uu.it.mare._\n\n// Read and interlace dataset\nval fr \u003d sc.newAPIHadoopFile(\n    \"s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR580965_1.filt.fastq.gz\",\n    classOf[SingleFastqInputFormat],\n    classOf[Void],\n    classOf[Text]\n).map(_._2.toString)\nval rr \u003d sc.newAPIHadoopFile(\n    \"s3n://1000genomes/phase3/data/HG02666/sequence_read/SRR580965_2.filt.fastq.gz\",\n    classOf[SingleFastqInputFormat],\n    classOf[Void],\n    classOf[Text]\n).map(_._2.toString)\nval inputData \u003d fr.zip(rr).map { case(fr,rr) \u003d\u003e fr+rr.dropRight(1) }.sample(false, 0.01, 12345).repartition(4)\n\n// Run MaRe\nval res \u003d new MaRe(inputData).map(\n    inputMountPoint \u003d TextFile(\"/chunk.fastq\"),\n    outputMountPoint \u003d TextFile(\"/aln.sam\"),\n    imageName \u003d \"mcapuccini/alignment:latest\",\n    command \u003d\n        \"\"\"\n        set -e\n        reference_genome\u003d/ref/human_downsampled.fasta\n        reads\u003d/chunk.fastq\n        bwa mem -t 8 -p $reference_genome $reads | samtools view \u003e /aln.sam\n        \"\"\"\n).repartitionBy(\n    keyBy \u003d (aln: String) \u003d\u003e {\n        val chrStr \u003d aln.split(\"\\\\s+\")(2)\n        if(chrStr.forall(Character.isDigit)) {\n            chrStr.toInt\n        } else {\n            chrStr match {\n                case \"X\" \u003d\u003e 23\n                case \"Y\" \u003d\u003e 24\n                case \"MT\" \u003d\u003e 25\n                case _ \u003d\u003e chrStr.hashCode\n            }\n        }\n    },\n    numPartitions \u003d 4\n).map(\n    inputMountPoint \u003d TextFile(\"/aln.sam\"),\n    outputMountPoint \u003d BinaryFiles(\"/results\"),\n    imageName \u003d \"mcapuccini/alignment:latest\",\n    command \u003d\n        \"\"\"\n        set -e\n        cat /ref/human_downsampled.dict /aln.sam \u003e /aln.header.sam\n        UUID\u003d$(cat /proc/sys/kernel/random/uuid)\n        gatk AddOrReplaceReadGroups --INPUT\u003d/aln.header.sam \\\n            --OUTPUT\u003d/aln.header.sorted.rg.bam \\\n            --SORT_ORDER\u003dcoordinate --RGID\u003dHG02666-id \\\n            --RGLB\u003dHG02666-lib \\\n            --RGPL\u003dILLUMINA \\\n            --RGPU\u003dHG02666-01 \\\n            --RGSM\u003dHG02666\n        gatk BuildBamIndex --INPUT\u003d/aln.header.sorted.rg.bam\n        \n        reference_genome\u003d/ref/human_downsampled.fasta\n        gatk HaplotypeCallerSpark -R $reference_genome -I /aln.header.sorted.rg.bam -O /results/aln.${UUID}.g.vcf\n        gzip /results/*\n        \"\"\"\n).reduce(\n    inputMountPoint \u003d BinaryFiles(\"/in\"),\n    outputMountPoint \u003d BinaryFiles(\"/out\"),\n    imageName \u003d \"opengenomics/vcftools-tools:latest\",\n    command \u003d\n        \"\"\"\n        set -e\n        UUID\u003d$(cat /proc/sys/kernel/random/uuid)\n        vcf-concat /in/*.vcf.gz | gzip -c \u003e /out/results.${UUID}.g.vcf.gz\n        \"\"\"\n).map(\n    inputMountPoint \u003d BinaryFiles(\"/in\"),\n    outputMountPoint \u003d TextFile(\"/out.tsv\"),\n    imageName \u003d \"mcapuccini/alignment:latest\",\n    command \u003d\n        \"\"\"\n        set -e\n        gunzip /in/*.gz\n        gatk VariantsToTable -V /in/*.vcf -O /out.hdr.tsv -F CHROM -F POS\n        tail -n +2 /out.hdr.tsv \u003e /out.tsv\n        \"\"\"\n).rdd.map(_.split(\"\\t\"))\n\n// Create dataframe\ncase class SNP(chr: String, pos: String)\nres.map{case Array(chr, str) \u003d\u003e SNP(chr, str)}.toDF.cache.createOrReplaceTempView(\"snp\")",
+      "user": "anonymous",
+      "dateUpdated": "2019-04-02 09:47:33.728",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import org.bdgenomics.adam.io._\nimport org.apache.hadoop.io.Text\nimport se.uu.it.mare._\nfr: org.apache.spark.rdd.RDD[String] \u003d MapPartitionsRDD[1] at map at \u003cconsole\u003e:39\nrr: org.apache.spark.rdd.RDD[String] \u003d MapPartitionsRDD[3] at map at \u003cconsole\u003e:38\ninputData: org.apache.spark.rdd.RDD[String] \u003d MapPartitionsRDD[10] at repartition at \u003cconsole\u003e:36\nres: org.apache.spark.rdd.RDD[Array[String]] \u003d MapPartitionsRDD[23] at map at \u003cconsole\u003e:108\ndefined class SNP\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1553610032249_-1659540131",
+      "id": "20190326-142032_682676831",
+      "dateCreated": "2019-03-26 14:20:32.249",
+      "dateStarted": "2019-04-02 09:47:34.263",
+      "dateFinished": "2019-04-02 09:47:48.391",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\nSELECT chr, count(*) FROM snp GROUP BY chr ORDER BY chr",
+      "user": "anonymous",
+      "dateUpdated": "2019-04-02 09:56:05.207",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300.0,
+              "optionOpen": true,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "chr": "string",
+                      "count(1)": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "chr",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "count(1)",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "chr\tcount(1)\n1\t126\n10\t7\n11\t49\n12\t44\n16\t36\n17\t155\n18\t28\n19\t32\n2\t24\n20\t22\n3\t61\n4\t26\n5\t47\n6\t56\n7\t100\n8\t33\n9\t29\nGL000192.1\t1\nGL000194.1\t1\nGL000199.1\t6\nGL000208.1\t5\nGL000209.1\t2\nGL000216.1\t6\nGL000221.1\t1\nGL000225.1\t36\nGL000226.1\t12\nGL000229.1\t3\nGL000235.1\t4\nGL000243.1\t2\nX\t10\n"
+          }
+        ]
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "http://spark-marco-2-master-000:4040/jobs/job?id\u003d0"
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "apps": [],
+      "jobName": "paragraph_1553610943398_118465027",
+      "id": "20190326-143543_378708712",
+      "dateCreated": "2019-03-26 14:35:43.398",
+      "dateStarted": "2019-04-02 09:48:32.298",
+      "dateFinished": "2019-04-02 09:52:58.323",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-03-26 14:36:56.479",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1553611016478_173813609",
+      "id": "20190326-143656_466408080",
+      "dateCreated": "2019-03-26 14:36:56.478",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "demo",
+  "id": "2E89H7FE4",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "sh:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}
