@@ -1,0 +1,211 @@
+{
+  "paragraphs": [
+    {
+      "text": "%spark.dep\n// Download deps\nz.reset\nz.load(\"org.bdgenomics.adam:adam-core-spark2_2.11:0.25.0\")\nz.addRepo(\"sonatype\").url(\"https://oss.sonatype.org/content/repositories/snapshots/\").snapshot\nz.load(\"se.uu.it:mare:0.4.0-SNAPSHOT\")",
+      "user": "anonymous",
+      "dateUpdated": "2019-03-18 13:38:21.958",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "res0: org.apache.zeppelin.dep.Dependency \u003d org.apache.zeppelin.dep.Dependency@242ee8d6\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1552916296621_-444735218",
+      "id": "20190318-133816_158504796",
+      "dateCreated": "2019-03-18 13:38:16.621",
+      "dateStarted": "2019-03-18 13:38:22.545",
+      "dateFinished": "2019-03-18 13:38:51.484",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\n// Dummy mare pipeline to pull containers\nimport se.uu.it.mare._\nnew MaRe(sc.parallelize(1 to 1000).map(_.toString)).map(\n    inputMountPoint \u003d TextFile(\"/in\"),\n    outputMountPoint \u003d TextFile(\"/out\"),\n    imageName \u003d \"mcapuccini/alignment:latest\",\n    command \u003d \"cat /in \u003e /out\"\n).map(\n    inputMountPoint \u003d TextFile(\"/in\"),\n    outputMountPoint \u003d TextFile(\"/out\"),\n    imageName \u003d \"opengenomics/vcftools-tools:latest\",\n    command \u003d \"cat /in \u003e /out\"\n).rdd.collect",
+      "user": "anonymous",
+      "dateUpdated": "2019-03-18 13:39:20.641",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import se.uu.it.mare._\nres5: Array[String] \u003d Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 17..."
+          }
+        ]
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "http://spark-marco-16-master-000:4040/jobs/job?id\u003d0"
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "apps": [],
+      "jobName": "paragraph_1552916301961_-1764721217",
+      "id": "20190318-133821_200324111",
+      "dateCreated": "2019-03-18 13:38:21.961",
+      "dateStarted": "2019-03-18 13:39:21.157",
+      "dateFinished": "2019-03-18 13:50:46.946",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\nimport org.bdgenomics.adam.io._\nimport org.apache.hadoop.io.Text\nimport se.uu.it.mare._\n\n// Read and interlace dataset\nval fr \u003d sc.newAPIHadoopFile(\n    \"s3n://gatk-test-data/wgs_fastq/NA12878_20k/*_1*\",\n    classOf[SingleFastqInputFormat],\n    classOf[Void],\n    classOf[Text]\n).map(_._2.toString)\nval rr \u003d sc.newAPIHadoopFile(\n    \"s3n://gatk-test-data/wgs_fastq/NA12878_20k/*_2*\",\n    classOf[SingleFastqInputFormat],\n    classOf[Void],\n    classOf[Text]\n).map(_._2.toString)\nval inputData \u003d fr.zip(rr).map { case(fr,rr) \u003d\u003e fr+rr.dropRight(1) }.repartition(64)\n\n// Run MaRe\nval res \u003d new MaRe(inputData).map(\n    inputMountPoint \u003d TextFile(\"/chunk.fastq\"),\n    outputMountPoint \u003d TextFile(\"/aln.sam\"),\n    imageName \u003d \"mcapuccini/alignment:latest\",\n    command \u003d\n        \"\"\"\n        set -e\n        reference_genome\u003d/ref/human_g1k_v37.fasta\n        reads\u003d/chunk.fastq\n        bwa mem -t 8 -p $reference_genome $reads | samtools view \u003e /aln.sam\n        \"\"\"\n).repartitionBy(\n    keyBy \u003d (aln: String) \u003d\u003e {\n        val chrStr \u003d aln.split(\"\\\\s+\")(2)\n        if(chrStr.forall(Character.isDigit)) {\n            chrStr.toInt\n        } else {\n            chrStr match {\n                case \"X\" \u003d\u003e 23\n                case \"Y\" \u003d\u003e 24\n                case \"MT\" \u003d\u003e 25\n                case _ \u003d\u003e chrStr.hashCode\n            }\n        }\n    },\n    numPartitions \u003d 16\n).map(\n    inputMountPoint \u003d TextFile(\"/aln.sam\"),\n    outputMountPoint \u003d BinaryFiles(\"/results\"),\n    imageName \u003d \"mcapuccini/alignment:latest\",\n    command \u003d\n        \"\"\"\n        set -e\n        cat /ref/human_g1k_v37.dict /aln.sam \u003e /aln.header.sam\n        UUID\u003d$(cat /proc/sys/kernel/random/uuid)\n        gatk AddOrReplaceReadGroups --INPUT\u003d/aln.header.sam \\\n            --OUTPUT\u003d/aln.header.sorted.rg.bam \\\n            --SORT_ORDER\u003dcoordinate --RGID\u003dHG02666-id \\\n            --RGLB\u003dHG02666-lib \\\n            --RGPL\u003dILLUMINA \\\n            --RGPU\u003dHG02666-01 \\\n            --RGSM\u003dHG02666\n        gatk BuildBamIndex --INPUT\u003d/aln.header.sorted.rg.bam\n        \n        reference_genome\u003d/ref/human_g1k_v37.fasta\n        gatk HaplotypeCallerSpark -R $reference_genome -I /aln.header.sorted.rg.bam -O /results/aln.${UUID}.g.vcf\n        gzip /results/*\n        \"\"\"\n).reduce(\n    inputMountPoint \u003d BinaryFiles(\"/in\"),\n    outputMountPoint \u003d BinaryFiles(\"/out\"),\n    imageName \u003d \"opengenomics/vcftools-tools:latest\",\n    command \u003d\n        \"\"\"\n        set -e\n        UUID\u003d$(cat /proc/sys/kernel/random/uuid)\n        vcf-concat /in/*.vcf.gz | gzip -c \u003e /out/results.${UUID}.g.vcf.gz\n        \"\"\"\n).map(\n    inputMountPoint \u003d BinaryFiles(\"/in\"),\n    outputMountPoint \u003d TextFile(\"/out.tsv\"),\n    imageName \u003d \"mcapuccini/alignment:latest\",\n    command \u003d\n        \"\"\"\n        set -e\n        gunzip /in/*.gz\n        gatk VariantsToTable -V /in/*.vcf -O /out.hdr.tsv -F CHROM -F POS\n        tail -n +2 /out.hdr.tsv \u003e /out.tsv\n        \"\"\"\n).rdd.map(_.split(\"\\t\"))\n\n// Create dataframe\ncase class SNP(chr: String, pos: String)\nres.map{case Array(chr, str) \u003d\u003e SNP(chr, str)}.toDF.cache.createOrReplaceTempView(\"snp\")\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-03-18 13:57:22.609",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import org.bdgenomics.adam.io._\nimport org.apache.hadoop.io.Text\nimport se.uu.it.mare._\nfr: org.apache.spark.rdd.RDD[String] \u003d MapPartitionsRDD[5] at map at \u003cconsole\u003e:42\nrr: org.apache.spark.rdd.RDD[String] \u003d MapPartitionsRDD[7] at map at \u003cconsole\u003e:41\ninputData: org.apache.spark.rdd.RDD[String] \u003d MapPartitionsRDD[13] at repartition at \u003cconsole\u003e:39\nres: org.apache.spark.rdd.RDD[Array[String]] \u003d MapPartitionsRDD[26] at map at \u003cconsole\u003e:111\ndefined class SNP\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1552916360641_79060196",
+      "id": "20190318-133920_264713146",
+      "dateCreated": "2019-03-18 13:39:20.641",
+      "dateStarted": "2019-03-18 13:57:23.208",
+      "dateFinished": "2019-03-18 13:57:30.320",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\nSELECT chr, count(*) FROM snp GROUP BY chr ORDER BY chr",
+      "user": "anonymous",
+      "dateUpdated": "2019-03-18 13:57:49.390",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "java.io.FileNotFoundException: /media/disk/mare_1da15e77-5b7d-46a4-8fe9-8aef72c28704 (Input/output error)\n\tat java.io.FileOutputStream.open0(Native Method)\n\tat java.io.FileOutputStream.open(FileOutputStream.java:270)\n\tat java.io.FileOutputStream.\u003cinit\u003e(FileOutputStream.java:213)\n\tat se.uu.it.mare.TextFile.writePartitionToHostPath(MountPoint.scala:74)\n\tat se.uu.it.mare.TextFile.writePartitionToHostPath(MountPoint.scala:82)\n\tat se.uu.it.mare.MaRe$$anonfun$1.apply(MaRe.scala:75)\n\tat se.uu.it.mare.MaRe$$anonfun$1.apply(MaRe.scala:69)\n\tat org.apache.spark.rdd.RDD$$anonfun$mapPartitions$1$$anonfun$apply$23.apply(RDD.scala:801)\n\tat org.apache.spark.rdd.RDD$$anonfun$mapPartitions$1$$anonfun$apply$23.apply(RDD.scala:801)\n\tat org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:49)\n\tat org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:324)\n\tat org.apache.spark.rdd.RDD.iterator(RDD.scala:288)\n\tat org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:49)\n\tat org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:324)\n\tat org.apache.spark.rdd.RDD.iterator(RDD.scala:288)\n\tat org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:49)\n\tat org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:324)\n\tat org.apache.spark.rdd.RDD.iterator(RDD.scala:288)\n\tat org.apache.spark.scheduler.ShuffleMapTask.runTask(ShuffleMapTask.scala:96)\n\tat org.apache.spark.scheduler.ShuffleMapTask.runTask(ShuffleMapTask.scala:53)\n\tat org.apache.spark.scheduler.Task.run(Task.scala:109)\n\tat org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:345)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)\n\tat java.lang.Thread.run(Thread.java:748)\n"
+          }
+        ]
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "http://spark-marco-16-master-000:4040/jobs/job?id\u003d1"
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "apps": [],
+      "jobName": "paragraph_1552916439207_-765148603",
+      "id": "20190318-134039_322279618",
+      "dateCreated": "2019-03-18 13:40:39.207",
+      "dateStarted": "2019-03-18 13:57:49.911",
+      "dateFinished": "2019-03-18 14:13:04.947",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-03-18 13:57:49.391",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1552917469390_-1435758386",
+      "id": "20190318-135749_1729184032",
+      "dateCreated": "2019-03-18 13:57:49.390",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "SNP Call (20k, 16 nodes)",
+  "id": "2E6Y2Q7D4",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}
